@@ -2,6 +2,10 @@
 
 This repository contains an updated **NexGentic Agents Protocol (NAP)**, a NASA‑inspired framework for developing, verifying and operating AI‑driven software systems. It integrates lessons from NASA’s software engineering requirements, software assurance standards and safety guidelines. The goal is to achieve predictable, auditable and safe agent behaviour while covering the full software life‑cycle from requirements through retirement. 
 
+## Project information
+
+For a concise publishing overview, read `INFO.md`.
+
 ## Start here first
 
 For a cleaner and deterministic navigation flow, begin with `START_HERE.md`.
