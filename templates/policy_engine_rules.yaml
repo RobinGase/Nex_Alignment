@@ -1,0 +1,134 @@
+﻿# Policy Engine Rules Template
+#
+# This YAML file defines example policy rules for NAP.
+# Runtime authorization outcomes remain owned by:
+# - runtime/compliance_runtime_spec.md
+# - runtime/unified_governance_decision_model.md
+#
+# Audit harness outputs are advisory only.
+
+rules:
+  # Example for a Class 2 task with autonomy tier A1
+  - name: medium-risk-assistive
+    risk_class: 2
+    autonomy_tier: A1
+    use_case_profiles:
+      - api_backend_services
+      - data_pipeline_etl
+    required_profile_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B05_PRIVACY_REGULATED_DATA
+      - B06_RUNTIME_CONTAINMENT
+      - B07_AI_MODEL_SUPPLY_CHAIN
+      - B09_SECURITY_INCIDENT_FORENSICS
+    required_artifacts:
+      - task_header
+      - assumptions
+      - plan
+      - diff_summary
+      - unit_tests
+      - integration_tests
+      - rollback_plan
+      - traceability_matrix
+    approvals:
+      - peer_review
+    gates:
+      - test_passed
+      - code_coverage_above: 0.80
+      - profile_match_required
+
+  # Example for a Class 3 task with autonomy tier A2
+  - name: high-risk-autonomous-with-approval
+    risk_class: 3
+    autonomy_tier: A2
+    use_case_profiles:
+      - database_operations
+    required_profile_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B06_RUNTIME_CONTAINMENT
+      - B09_SECURITY_INCIDENT_FORENSICS
+    required_artifacts:
+      - task_header
+      - assumptions
+      - plan
+      - diff_summary
+      - detailed_test_plan
+      - hazard_analysis
+      - safety_classification
+      - independent_verification_log
+      - rollback_plan
+      - risk_acceptance_form
+      - incident_artifact_plan
+    approvals:
+      - peer_review
+      - safety_board
+    gates:
+      - ivv_passed
+      - evidence_anchor_verified
+      - residual_risk_accepted
+      - profile_match_required
+
+  # Example for payments/transfers with stricter controls
+  - name: payments-transfers-high-assurance
+    risk_class: 3
+    autonomy_tier: A2
+    use_case_profiles:
+      - payments_transfers
+    required_profile_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B04_FINANCIAL_TRANSACTION_CONTROL
+      - B05_PRIVACY_REGULATED_DATA
+      - B06_RUNTIME_CONTAINMENT
+      - B09_SECURITY_INCIDENT_FORENSICS
+    required_artifacts:
+      - task_header
+      - assumptions
+      - plan
+      - transfer_limit_policy
+      - rollback_plan
+      - fraud_monitoring_plan
+      - dual_control_approval_record
+      - risk_acceptance_form
+      - incident_response_runbook
+    approvals:
+      - peer_review
+      - finance_controller
+      - safety_board
+    gates:
+      - dual_approval_verified
+      - transfer_limit_within_policy
+      - fraud_checks_passed
+      - evidence_anchor_verified
+      - residual_risk_accepted
+      - profile_match_required
+
+  # Example for a Class 4 clinical task under strict human-governed autonomy
+  - name: critical-full-autonomy
+    risk_class: 4
+    autonomy_tier: A2
+    use_case_profiles:
+      - healthcare_clinical_ai
+    required_profile_bundles:
+      - B01_CORE_GOV
+      - B05_PRIVACY_REGULATED_DATA
+      - B06_RUNTIME_CONTAINMENT
+      - B07_AI_MODEL_SUPPLY_CHAIN
+      - B08_FORMAL_ASSURANCE
+    required_artifacts:
+      - all_artifacts_from_class3
+      - software_assurance_plan
+      - ivv_report
+      - telemetry_monitoring_plan
+      - formal_proof_bundle
+    approvals:
+      - executive_authority
+      - regulator_authority
+    gates:
+      - continuous_monitoring_enabled
+      - kill_switch_tested
+      - residual_risk_accepted
+      - profile_match_required
+

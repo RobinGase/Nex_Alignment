@@ -1,0 +1,183 @@
+version: "1.0.0"
+
+composite_policy:
+  max_total_profiles: 3
+  max_secondary_profiles: 2
+  effective_controls: union_required_bundles
+  effective_min_risk_class: max_profile_floor
+  effective_autonomy_ceiling: most_restrictive
+  conflict_resolution: highest-safety-wins
+
+profiles:
+  - id: website_frontend
+    typical_work: UI, content, and presentation-layer updates.
+    min_risk_class: 1
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B03_USER_CONTENT_SAFETY
+      - B06_RUNTIME_CONTAINMENT
+    operation_tags:
+      - frontend
+      - ui_content
+      - presentation_layer
+
+  - id: database_operations
+    typical_work: Schema changes, migrations, and query behavior changes.
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B06_RUNTIME_CONTAINMENT
+      - B09_SECURITY_INCIDENT_FORENSICS
+    operation_tags:
+      - database_schema
+      - data_migration
+      - query_change
+
+  - id: payments_transfers
+    typical_work: Currency transfer, settlement, and funds movement workflows.
+    min_risk_class: 3
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B04_FINANCIAL_TRANSACTION_CONTROL
+      - B05_PRIVACY_REGULATED_DATA
+      - B06_RUNTIME_CONTAINMENT
+      - B09_SECURITY_INCIDENT_FORENSICS
+    operation_tags:
+      - currency_transfer
+      - settlement
+      - payment_execution
+      - fraud_control
+
+  - id: ai_stack_training_inference
+    typical_work: Model training, fine-tuning, deployment, and inference changes.
+    min_risk_class: 2
+    autonomy_ceiling: A3
+    required_bundles:
+      - B01_CORE_GOV
+      - B05_PRIVACY_REGULATED_DATA
+      - B06_RUNTIME_CONTAINMENT
+      - B07_AI_MODEL_SUPPLY_CHAIN
+    operation_tags:
+      - model_training
+      - model_finetune
+      - model_inference
+
+  - id: data_pipeline_etl
+    typical_work: Data ingestion, transform, and load pipelines.
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B05_PRIVACY_REGULATED_DATA
+      - B06_RUNTIME_CONTAINMENT
+      - B07_AI_MODEL_SUPPLY_CHAIN
+    operation_tags:
+      - etl
+      - data_ingestion
+      - data_transformation
+
+  - id: api_backend_services
+    typical_work: API behavior and service logic changes.
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B06_RUNTIME_CONTAINMENT
+      - B09_SECURITY_INCIDENT_FORENSICS
+    operation_tags:
+      - api_change
+      - backend_logic
+      - service_runtime
+
+  - id: infrastructure_devops
+    typical_work: Deployment, infrastructure, and runtime operations.
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B06_RUNTIME_CONTAINMENT
+      - B09_SECURITY_INCIDENT_FORENSICS
+    operation_tags:
+      - deployment
+      - infrastructure_change
+      - runtime_ops
+
+  - id: security_incident_response
+    typical_work: Active response to security incidents.
+    min_risk_class: 3
+    autonomy_ceiling: A3
+    required_bundles:
+      - B01_CORE_GOV
+      - B06_RUNTIME_CONTAINMENT
+      - B09_SECURITY_INCIDENT_FORENSICS
+    operation_tags:
+      - incident_triage
+      - containment_action
+      - forensic_capture
+
+  - id: healthcare_clinical_ai
+    typical_work: Clinical or health-impact AI decision support and automation.
+    min_risk_class: 4
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B05_PRIVACY_REGULATED_DATA
+      - B06_RUNTIME_CONTAINMENT
+      - B07_AI_MODEL_SUPPLY_CHAIN
+      - B08_FORMAL_ASSURANCE
+    operation_tags:
+      - clinical_decision_support
+      - health_data_processing
+      - medical_recommendation
+
+  - id: legal_advice_generation
+    typical_work: Legal analysis and advice generation outputs.
+    min_risk_class: 3
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B03_USER_CONTENT_SAFETY
+      - B05_PRIVACY_REGULATED_DATA
+      - B06_RUNTIME_CONTAINMENT
+    operation_tags:
+      - legal_analysis
+      - legal_advice_output
+      - policy_interpretation
+
+  - id: identity_kyc_auth
+    typical_work: Identity verification, KYC, and authentication decisioning.
+    min_risk_class: 3
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B05_PRIVACY_REGULATED_DATA
+      - B06_RUNTIME_CONTAINMENT
+      - B09_SECURITY_INCIDENT_FORENSICS
+    operation_tags:
+      - identity_verification
+      - kyc_decision
+      - auth_decision
+
+  - id: third_party_integration
+    typical_work: Integration with external vendors, APIs, or federated systems.
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    required_bundles:
+      - B01_CORE_GOV
+      - B02_CHANGE_DATA_INTEGRITY
+      - B05_PRIVACY_REGULATED_DATA
+      - B07_AI_MODEL_SUPPLY_CHAIN
+      - B10_INTEROP_FEDERATION
+    operation_tags:
+      - third_party_api
+      - vendor_integration
+      - federation_link

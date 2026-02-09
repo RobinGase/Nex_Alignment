@@ -1,0 +1,150 @@
+version: "1.0.0"
+
+global_entrypoints:
+  start_here: START_HERE.md
+  core_index: core/README.md
+  safety_index: safety/README.md
+  runtime_index: runtime/README.md
+  evaluation_index: evaluation/README.md
+  playbooks_index: use_case_playbooks/README.md
+
+required_validation_scripts:
+  - tools/validate_use_case_profiles.ps1
+  - tools/check_policy_runtime_parity.ps1
+  - tools/run_enforcement_simulations.ps1
+
+routes:
+  - profile_id: website_frontend
+    min_risk_class: 1
+    autonomy_ceiling: A2
+    docs:
+      - core/README.md
+      - runtime/use_case_profile_framework.md
+      - safety/testing_and_verification.md
+      - safety/runtime_behavioral_contracts.md
+    output_reports:
+      - audit_outputs/use_case_profile_validation_report.json
+      - audit_outputs/policy_runtime_parity_report.json
+      - audit_outputs/executable_simulation_results.json
+
+  - profile_id: database_operations
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    docs:
+      - core/README.md
+      - core/configuration_and_risk_management.md
+      - core/traceability_and_documentation.md
+      - runtime/README.md
+    output_reports:
+      - audit_outputs/policy_runtime_parity_report.json
+
+  - profile_id: payments_transfers
+    min_risk_class: 3
+    autonomy_ceiling: A2
+    docs:
+      - runtime/README.md
+      - evaluation/economic_and_performance_risk_modeling.md
+      - safety/risk_acceptance_and_residuals.md
+      - runtime/compliance_runtime_spec.md
+    output_reports:
+      - audit_outputs/policy_runtime_parity_report.json
+      - audit_outputs/executable_simulation_results.json
+
+  - profile_id: ai_stack_training_inference
+    min_risk_class: 2
+    autonomy_ceiling: A3
+    docs:
+      - core/README.md
+      - safety/ai_specific_considerations.md
+      - safety/model_and_data_supply_chain_security.md
+      - runtime/README.md
+    output_reports:
+      - audit_outputs/use_case_profile_validation_report.json
+
+  - profile_id: data_pipeline_etl
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    docs:
+      - core/README.md
+      - core/configuration_and_risk_management.md
+      - core/traceability_and_documentation.md
+      - core/trace_graph_schema.md
+    output_reports:
+      - audit_outputs/policy_runtime_parity_report.json
+
+  - profile_id: api_backend_services
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    docs:
+      - core/README.md
+      - core/architecture_design.md
+      - safety/testing_and_verification.md
+      - runtime/README.md
+    output_reports:
+      - audit_outputs/policy_runtime_parity_report.json
+
+  - profile_id: infrastructure_devops
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    docs:
+      - runtime/README.md
+      - safety/operations_and_maintenance.md
+      - runtime/telemetry_schema.md
+      - runtime/enforcement_architecture_and_implementation.md
+    output_reports:
+      - audit_outputs/executable_simulation_results.json
+
+  - profile_id: security_incident_response
+    min_risk_class: 3
+    autonomy_ceiling: A3
+    docs:
+      - safety/README.md
+      - runtime/README.md
+      - runtime/enforcement_and_policy_engine.md
+      - runtime/telemetry_schema.md
+    output_reports:
+      - audit_outputs/executable_simulation_results.json
+
+  - profile_id: healthcare_clinical_ai
+    min_risk_class: 4
+    autonomy_ceiling: A2
+    docs:
+      - safety/README.md
+      - safety/formal_verification_and_runtime_proof.md
+      - runtime/compliance_runtime_spec.md
+      - safety/risk_acceptance_and_residuals.md
+    output_reports:
+      - audit_outputs/executable_simulation_results.json
+
+  - profile_id: legal_advice_generation
+    min_risk_class: 3
+    autonomy_ceiling: A2
+    docs:
+      - safety/README.md
+      - safety/ai_specific_considerations.md
+      - safety/testing_and_verification.md
+      - safety/runtime_behavioral_contracts.md
+    output_reports:
+      - audit_outputs/policy_runtime_parity_report.json
+
+  - profile_id: identity_kyc_auth
+    min_risk_class: 3
+    autonomy_ceiling: A2
+    docs:
+      - core/README.md
+      - safety/model_and_data_supply_chain_security.md
+      - core/traceability_and_documentation.md
+      - runtime/README.md
+    output_reports:
+      - audit_outputs/policy_runtime_parity_report.json
+
+  - profile_id: third_party_integration
+    min_risk_class: 2
+    autonomy_ceiling: A2
+    docs:
+      - core/README.md
+      - evaluation/federated_governance_and_interoperability.md
+      - safety/model_and_data_supply_chain_security.md
+      - runtime/README.md
+    output_reports:
+      - audit_outputs/use_case_profile_validation_report.json

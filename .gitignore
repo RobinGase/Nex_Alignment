@@ -1,0 +1,11 @@
+# Generated audit outputs (fresh project workspace)
+audit_outputs/*.json
+audit_outputs/*.csv
+audit_outputs/*.yaml
+audit_outputs/*.yml
+audit_outputs/*.md
+!audit_outputs/README.md
+
+# Local editor and OS artifacts
+.DS_Store
+Thumbs.db

@@ -1,0 +1,61 @@
+﻿version: "1.0.0"
+
+bundles:
+  - id: B01_CORE_GOV
+    purpose: Core risk, autonomy, and governance baseline controls.
+    primary_nap_anchors:
+      - core/risk_classification.md
+      - runtime/compliance_runtime_spec.md
+
+  - id: B02_CHANGE_DATA_INTEGRITY
+    purpose: Change safety, migrations, rollback, and traceability.
+    primary_nap_anchors:
+      - core/configuration_and_risk_management.md
+      - core/traceability_and_documentation.md
+
+  - id: B03_USER_CONTENT_SAFETY
+    purpose: User-facing content quality and harm-constraint controls.
+    primary_nap_anchors:
+      - safety/testing_and_verification.md
+      - safety/ai_specific_considerations.md
+
+  - id: B04_FINANCIAL_TRANSACTION_CONTROL
+    purpose: Transfer limits, approvals, and fraud-risk containment.
+    primary_nap_anchors:
+      - evaluation/economic_and_performance_risk_modeling.md
+      - safety/risk_acceptance_and_residuals.md
+
+  - id: B05_PRIVACY_REGULATED_DATA
+    purpose: Sensitive data handling and regulated-compliance controls.
+    primary_nap_anchors:
+      - safety/model_and_data_supply_chain_security.md
+      - core/risk_classification.md
+
+  - id: B06_RUNTIME_CONTAINMENT
+    purpose: Runtime contracts, kill-switches, and override logic.
+    primary_nap_anchors:
+      - safety/runtime_behavioral_contracts.md
+      - runtime/enforcement_and_policy_engine.md
+
+  - id: B07_AI_MODEL_SUPPLY_CHAIN
+    purpose: Model and dataset provenance plus integrity controls.
+    primary_nap_anchors:
+      - safety/model_and_data_supply_chain_security.md
+      - safety/evidence_anchor_and_log_integrity.md
+
+  - id: B08_FORMAL_ASSURANCE
+    purpose: Formal contracts and proof-carrying assurance controls.
+    primary_nap_anchors:
+      - safety/formal_verification_and_runtime_proof.md
+
+  - id: B09_SECURITY_INCIDENT_FORENSICS
+    purpose: Security alerting, escalation, and incident artifacts.
+    primary_nap_anchors:
+      - runtime/enforcement_and_policy_engine.md
+      - runtime/telemetry_schema.md
+
+  - id: B10_INTEROP_FEDERATION
+    purpose: Cross-organization policy and evidence interoperability.
+    primary_nap_anchors:
+      - evaluation/federated_governance_and_interoperability.md
+
