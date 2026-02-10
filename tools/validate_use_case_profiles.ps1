@@ -1,7 +1,7 @@
 param(
-    [string]$ProfilesPath = "NexGentic_Agents_Protocol/profiles/use_case_profiles.yaml",
-    [string]$BundlesPath = "NexGentic_Agents_Protocol/profiles/use_case_bundles.yaml",
-    [string]$OutputPath = "NexGentic_Agents_Protocol/audit_outputs/use_case_profile_validation_report.json"
+    [string]$ProfilesPath = (Join-Path $PSScriptRoot "..\profiles\use_case_profiles.yaml"),
+    [string]$BundlesPath = (Join-Path $PSScriptRoot "..\profiles\use_case_bundles.yaml"),
+    [string]$OutputPath = (Join-Path $PSScriptRoot "..\audit_outputs\use_case_profile_validation_report.json")
 )
 
 Set-StrictMode -Version Latest
@@ -67,8 +67,9 @@ function Get-BundleCatalog {
         [string]$Path
     )
 
-    if (-not (Test-Path $Path)) {
-        throw "Bundle catalog not found: $Path"
+    if (-not (Test-Path -Path $Path)) {
+        Write-Error "Bundle catalog not found at: $Path`nRemediation: Run from repository root or provide explicit -BundlesPath parameter."
+        exit 1
     }
 
     $raw = Get-Content -Path $Path -Raw
@@ -103,8 +104,9 @@ function Get-ProfileCatalog {
         [string]$Path
     )
 
-    if (-not (Test-Path $Path)) {
-        throw "Profile catalog not found: $Path"
+    if (-not (Test-Path -Path $Path)) {
+        Write-Error "Profile catalog not found at: $Path`nRemediation: Run from repository root or provide explicit -ProfilesPath parameter."
+        exit 1
     }
 
     $raw = Get-Content -Path $Path -Raw

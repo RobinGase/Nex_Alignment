@@ -30,9 +30,16 @@ Additional supporting directories.
 Run the following commands before publishing or release.
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File NexGentic_Agents_Protocol/tools/validate_use_case_profiles.ps1
-powershell -NoProfile -ExecutionPolicy Bypass -File NexGentic_Agents_Protocol/tools/check_policy_runtime_parity.ps1
-powershell -NoProfile -ExecutionPolicy Bypass -File NexGentic_Agents_Protocol/tools/run_enforcement_simulations.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_use_case_profiles.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/check_policy_runtime_parity.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/run_enforcement_simulations.ps1
+```
+
+## Optional Integration Command
+If optional external workflows are enabled in `.env`, run:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/run_optional_workflows.ps1
 ```
 
 ## Decision Ownership

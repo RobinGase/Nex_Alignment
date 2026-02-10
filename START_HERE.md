@@ -52,9 +52,9 @@ It routes work to the correct folders and protocol documents by use case.
 Run all three:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File NexGentic_Agents_Protocol/tools/validate_use_case_profiles.ps1
-powershell -NoProfile -ExecutionPolicy Bypass -File NexGentic_Agents_Protocol/tools/check_policy_runtime_parity.ps1
-powershell -NoProfile -ExecutionPolicy Bypass -File NexGentic_Agents_Protocol/tools/run_enforcement_simulations.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_use_case_profiles.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/check_policy_runtime_parity.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/run_enforcement_simulations.ps1
 ```
 
 Then review:
@@ -63,14 +63,26 @@ Then review:
 - `audit_outputs/policy_runtime_parity_report.json`
 - `audit_outputs/executable_simulation_results.json`
 
-## 5. Decision authority reminder
+## 5. Optional workflow integrations (env-driven)
+
+If you want optional external tool-calls (for example Notion), configure `.env` from `.env.example` and run:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/run_optional_workflows.ps1
+```
+
+Review:
+
+- `audit_outputs/optional_workflow_results.json`
+
+## 6. Decision authority reminder
 
 To avoid double-divination:
 
 1. Runtime decisions are owned by `runtime/compliance_runtime_spec.md` + `runtime/unified_governance_decision_model.md`.
 2. Harness docs are advisory and do not independently authorize release.
 
-## 6. Optional machine routing
+## 7. Optional machine routing
 
 For automated agents and CI routing, use:
 

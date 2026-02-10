@@ -1,0 +1,24 @@
+# GitLab CI pipeline for NAP Protocol Validation
+# Requires GitLab runner with pwsh (PowerShell Core 7+) available
+
+stages:
+  - validate
+
+validate_protocol:
+  stage: validate
+  image: mcr.microsoft.com/powershell:7.4-latest
+  script:
+    - pwsh -File ./tools/check_version_consistency.ps1
+    - pwsh -File ./tools/validate_use_case_profiles.ps1
+    - pwsh -File ./tools/check_policy_runtime_parity.ps1
+    - pwsh -File ./tools/run_enforcement_simulations.ps1
+    - pwsh -File ./tools/run_optional_workflows.ps1
+  artifacts:
+    when: always
+    paths:
+      - audit_outputs/*.json
+    expire_in: 30 days
+  only:
+    - main
+    - develop
+    - merge_requests

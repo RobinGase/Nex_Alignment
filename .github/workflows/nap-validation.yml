@@ -1,0 +1,42 @@
+name: NAP Protocol Validation
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+  push:
+    branches: [ main, develop ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check version consistency
+        shell: pwsh
+        run: ./tools/check_version_consistency.ps1
+
+      - name: Validate use case profiles
+        shell: pwsh
+        run: ./tools/validate_use_case_profiles.ps1
+
+      - name: Check policy runtime parity
+        shell: pwsh
+        run: ./tools/check_policy_runtime_parity.ps1
+
+      - name: Run enforcement simulations
+        shell: pwsh
+        run: ./tools/run_enforcement_simulations.ps1
+
+      - name: Run optional workflows
+        shell: pwsh
+        run: ./tools/run_optional_workflows.ps1
+        continue-on-error: true
+
+      - name: Upload audit artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nap-audit-reports
+          path: audit_outputs/*.json

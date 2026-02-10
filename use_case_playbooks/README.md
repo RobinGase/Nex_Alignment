@@ -27,7 +27,7 @@ Canonical profile metadata remains in:
 ## Required execution checks
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File NexGentic_Agents_Protocol/tools/validate_use_case_profiles.ps1
-powershell -NoProfile -ExecutionPolicy Bypass -File NexGentic_Agents_Protocol/tools/check_policy_runtime_parity.ps1
-powershell -NoProfile -ExecutionPolicy Bypass -File NexGentic_Agents_Protocol/tools/run_enforcement_simulations.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate_use_case_profiles.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/check_policy_runtime_parity.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/run_enforcement_simulations.ps1
 ```

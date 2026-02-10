@@ -1,8 +1,8 @@
-﻿param(
-    [string]$RulesPath = "NexGentic_Agents_Protocol/templates/policy_engine_rules.yaml",
-    [string]$ProfilesPath = "NexGentic_Agents_Protocol/profiles/use_case_profiles.yaml",
-    [string]$BundlesPath = "NexGentic_Agents_Protocol/profiles/use_case_bundles.yaml",
-    [string]$OutputPath = "NexGentic_Agents_Protocol/audit_outputs/policy_runtime_parity_report.json"
+param(
+    [string]$RulesPath = (Join-Path $PSScriptRoot "..\templates\policy_engine_rules.yaml"),
+    [string]$ProfilesPath = (Join-Path $PSScriptRoot "..\profiles\use_case_profiles.yaml"),
+    [string]$BundlesPath = (Join-Path $PSScriptRoot "..\profiles\use_case_bundles.yaml"),
+    [string]$OutputPath = (Join-Path $PSScriptRoot "..\audit_outputs\policy_runtime_parity_report.json")
 )
 
 Set-StrictMode -Version Latest
@@ -68,8 +68,9 @@ function Get-BundleCatalog {
         [string]$Path
     )
 
-    if (-not (Test-Path $Path)) {
-        throw "Bundle catalog not found: $Path"
+    if (-not (Test-Path -Path $Path)) {
+        Write-Error "Bundle catalog not found at: $Path`nRemediation: Run from repository root or provide explicit -BundlesPath parameter."
+        exit 1
     }
 
     $raw = Get-Content -Path $Path -Raw
@@ -93,8 +94,9 @@ function Get-ProfileCatalog {
         [string]$Path
     )
 
-    if (-not (Test-Path $Path)) {
-        throw "Profile catalog not found: $Path"
+    if (-not (Test-Path -Path $Path)) {
+        Write-Error "Profile catalog not found at: $Path`nRemediation: Run from repository root or provide explicit -ProfilesPath parameter."
+        exit 1
     }
 
     $raw = Get-Content -Path $Path -Raw
@@ -123,8 +125,9 @@ function Get-ProfileCatalog {
     return @($profiles)
 }
 
-if (-not (Test-Path $RulesPath)) {
-    throw "Rules file not found: $RulesPath"
+if (-not (Test-Path -Path $RulesPath)) {
+    Write-Error "Rules file not found at: $RulesPath`nRemediation: Run from repository root or provide explicit -RulesPath parameter."
+    exit 1
 }
 
 $bundleIds = Get-BundleCatalog -Path $BundlesPath

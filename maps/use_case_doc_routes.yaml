@@ -1,4 +1,4 @@
-version: "1.0.0"
+version: "1.1.3"
 
 global_entrypoints:
   start_here: START_HERE.md

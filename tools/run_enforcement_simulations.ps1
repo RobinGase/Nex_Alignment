@@ -1,6 +1,6 @@
-﻿param(
-    [string]$OutputPath = "NexGentic_Agents_Protocol/audit_outputs/executable_simulation_results.json",
-    [string]$ProfilesPath = "NexGentic_Agents_Protocol/profiles/use_case_profiles.yaml",
+param(
+    [string]$OutputPath = (Join-Path $PSScriptRoot "..\audit_outputs\executable_simulation_results.json"),
+    [string]$ProfilesPath = (Join-Path $PSScriptRoot "..\profiles\use_case_profiles.yaml"),
     [switch]$WriteTelemetrySamples
 )
 
@@ -90,8 +90,9 @@ function Get-ProfileCatalog {
         [string]$Path
     )
 
-    if (-not (Test-Path $Path)) {
-        throw "Profile catalog not found: $Path"
+    if (-not (Test-Path -Path $Path)) {
+        Write-Error "Profile catalog not found at: $Path`nRemediation: Run from repository root or provide explicit -ProfilesPath parameter."
+        exit 1
     }
 
     $raw = Get-Content -Path $Path -Raw
