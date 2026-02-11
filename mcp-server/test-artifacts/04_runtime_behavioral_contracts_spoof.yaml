@@ -1,0 +1,35 @@
+contracts:
+  - contract_id: CON-1
+    description: Agent file-scope enforcement
+    allowed_actions:
+      - read_assignments
+      - request_review
+      - submit_review
+      - check_status
+    preconditions:
+      - agent_registered
+      - assignment_exists
+    invariants:
+      - file_path_within_assignment: true
+      - direct_agent_to_agent_channel: false
+    postconditions:
+      - telemetry_emitted: true
+      - decision_logged: true
+    fallback:
+      action: block
+      event_type: runtime_violation
+
+  - contract_id: CON-2
+    description: Review payload completeness
+    preconditions:
+      - request_id_present
+      - reviewer_agent_registered
+    invariants:
+      - findings_not_empty: true
+      - decision_in_enum: true
+    postconditions:
+      - review_response_persisted: true
+      - request_status_completed: true
+    fallback:
+      action: reject
+      event_type: policy_violation

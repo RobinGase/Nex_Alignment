@@ -1,5 +1,5 @@
 BeforeAll {
-    . "$PSScriptRoot/../../validate_use_case_profiles.ps1"
+    . "$PSScriptRoot/../validate_use_case_profiles.ps1"
 }
 
 Describe 'Profile Validation' {
@@ -87,7 +87,7 @@ Describe 'Profile Validation' {
 
         It 'Validates autonomy_ceiling format' {
             $validCeilings = @("A0", "A1", "A2", "A3", "A4")
-            $invalidCeilings = @("A5", "B1", "a1", "A02", "")
+            $invalidCeilings = @("A5", "B1", "A02", "", $null)
 
             foreach ($ceiling in $validCeilings) {
                 $rank = Get-AutonomyRank -Tier $ceiling
@@ -124,15 +124,15 @@ Describe 'Profile Validation' {
             $profileBundleIds = @("B01", "B99")
 
             $unknownBundles = $profileBundleIds | Where-Object { $_ -notin $bundleIds }
-            $unknownBundles.Count | Should -Be 1
-            $unknownBundles[0] | Should -Be "B99"
+            @($unknownBundles).Count | Should -Be 1
+            @($unknownBundles)[0] | Should -Be "B99"
         }
 
         It 'Detects duplicate bundle IDs' {
             $bundleIds = @("B01", "B02", "B01")
             $duplicates = $bundleIds | Group-Object | Where-Object { $_.Count -gt 1 }
 
-            $duplicates.Count | Should -Be 1
+            @($duplicates).Count | Should -Be 1
             $duplicates[0].Name | Should -Be "B01"
             $duplicates[0].Count | Should -Be 2
         }
@@ -141,7 +141,7 @@ Describe 'Profile Validation' {
             $profileIds = @("p1", "p2", "p1")
             $duplicates = $profileIds | Group-Object | Where-Object { $_.Count -gt 1 }
 
-            $duplicates.Count | Should -Be 1
+            @($duplicates).Count | Should -Be 1
             $duplicates[0].Name | Should -Be "p1"
             $duplicates[0].Count | Should -Be 2
         }

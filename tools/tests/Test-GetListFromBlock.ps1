@@ -1,5 +1,5 @@
 BeforeAll {
-    . "$PSScriptRoot/../../validate_use_case_profiles.ps1"
+    . "$PSScriptRoot/../validate_use_case_profiles.ps1"
 }
 
 Describe 'Get-ListFromBlock' {

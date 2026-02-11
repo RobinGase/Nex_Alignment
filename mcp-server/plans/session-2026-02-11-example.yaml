@@ -1,0 +1,50 @@
+plan_id: "SESSION-2026-02-11"
+created_at: "2026-02-11T10:00:00Z"
+orchestrator: "orchestrator-session-id"
+risk_class: 2
+autonomy_tier: "A2"
+
+interaction_contract:
+  isolation_level: "strict"
+  communication: "via_mcp_only"
+  forbidden:
+    - "modify_other_agent_files"
+    - "direct_agent_communication"
+
+assignees:
+  - agent_id: "agent-session-0"
+    files:
+      - "src/module_a/*"
+      - "tests/module_a/*"
+    constraints:
+      - "no_modify_files_starting_with_B"
+      - "follow_safety_guidelines"
+    dependencies: []
+    
+  - agent_id: "agent-session-1"
+    files:
+      - "src/module_b/*"
+    constraints:
+      - "only_read_module_a"
+      - "follow_safety_guidelines"
+    dependencies:
+      - "agent-session-0"
+    
+  - agent_id: "agent-session-2"
+    files:
+      - "docs/guide/*"
+    constraints:
+      - "no_code_modifications"
+      - "documentation_only"
+    dependencies: []
+    
+  - agent_id: "agent-session-3"
+    files:
+      - "src/integration/*"
+    constraints:
+      - "wait_for_all_others"
+      - "follow_safety_guidelines"
+    dependencies:
+      - "agent-session-0"
+      - "agent-session-1"
+      - "agent-session-2"

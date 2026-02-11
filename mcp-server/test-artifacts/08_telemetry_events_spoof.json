@@ -1,0 +1,46 @@
+[
+  {
+    "event_id": "TELEM-001",
+    "timestamp": "2026-02-11T10:00:00Z",
+    "schema_version": "1.0.0",
+    "source": "mcp_server",
+    "context": {
+      "task_id": "TASK-MCP-001",
+      "agent_id": "agent-0",
+      "risk_class": 2,
+      "autonomy_tier": "A2"
+    },
+    "event_type": "telemetry_health",
+    "severity": "info",
+    "description": "Server initialized",
+    "evidence_ids": ["REQ-1", "DES-1", "TST-1"]
+  },
+  {
+    "event_id": "TELEM-002",
+    "timestamp": "2026-02-11T10:02:00Z",
+    "schema_version": "1.0.0",
+    "source": "review_system",
+    "context": {
+      "request_id": "RR-001",
+      "from": "agent-0",
+      "to": "agent-1"
+    },
+    "event_type": "approval_required",
+    "severity": "warning",
+    "description": "Review requested"
+  },
+  {
+    "event_id": "TELEM-003",
+    "timestamp": "2026-02-11T10:03:00Z",
+    "schema_version": "1.0.0",
+    "source": "contract_monitor",
+    "context": {
+      "contract_id": "CON-1",
+      "agent_id": "agent-2"
+    },
+    "event_type": "runtime_violation",
+    "severity": "error",
+    "description": "Forbidden file path blocked",
+    "evidence_ids": ["CTL-1", "HAZ-1"]
+  }
+]

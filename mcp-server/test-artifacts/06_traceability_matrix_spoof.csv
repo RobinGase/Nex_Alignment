@@ -1,0 +1,6 @@
+requirement_id,design_id,code_id,test_id,control_id,hazard_id
+REQ-1,DES-1,COD-1,TST-1,CTL-1,HAZ-1
+REQ-2,DES-2,COD-2,TST-2,CTL-2,HAZ-1
+REQ-3,DES-3,COD-3,TST-3,CTL-3,HAZ-2
+REQ-4,DES-4,COD-4,TST-4,CTL-4,HAZ-3
+REQ-5,DES-5,COD-5,TST-5,CTL-5,HAZ-3

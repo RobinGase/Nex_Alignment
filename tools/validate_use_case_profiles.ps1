@@ -33,17 +33,18 @@ function Get-ListFromBlock {
             continue
         }
 
-        if ($line -match "^\s*[A-Za-z0-9_]+\s*:\s*") {
+        if ($line -match "^\s*[A-Za-z0-9_-]+\s*:\s*") {
             break
         }
     }
 
-    return @($items)
+    Write-Output -NoEnumerate $items
 }
 
 function Get-AutonomyRank {
     param(
-        [Parameter(Mandatory = $true)]
+        [AllowNull()]
+        [AllowEmptyString()]
         [string]$Tier
     )
 
@@ -55,8 +56,13 @@ function Get-AutonomyRank {
         "A4" = 4
     }
 
-    if ($map.ContainsKey($Tier)) {
-        return [int]$map[$Tier]
+    if ([string]::IsNullOrWhiteSpace($Tier)) {
+        return -1
+    }
+
+    $normalizedTier = $Tier.ToUpperInvariant()
+    if ($map.ContainsKey($normalizedTier)) {
+        return [int]$map[$normalizedTier]
     }
     return -1
 }

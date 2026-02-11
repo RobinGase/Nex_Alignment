@@ -1,0 +1,20 @@
+interaction_contracts:
+  - interaction_id: IC-1
+    participants:
+      - orchestrator
+      - agent-0
+      - agent-1
+      - agent-2
+      - agent-3
+    allowed_message_types:
+      - assignment_read
+      - review_request
+      - review_response
+      - status_report
+    forbidden:
+      - direct_file_mutation_outside_scope
+      - direct_agent_socket_messages
+    response_time_slo_ms: 5000
+    invariants:
+      - autonomy_cascade_blocked: true
+      - highest_safety_wins: true
