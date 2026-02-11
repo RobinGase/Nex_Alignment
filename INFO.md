@@ -20,7 +20,7 @@ Additional supporting directories.
 5. `audit_outputs/` for generated validation reports.
 
 ## Start Sequence
-1. Open `START_HERE.md`.
+1. Open `.AppName/APPNAME.md`.
 2. Select a use-case profile.
 3. Declare risk class and autonomy tier.
 4. Complete required templates.

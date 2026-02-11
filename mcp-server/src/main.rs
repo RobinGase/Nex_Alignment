@@ -1,14 +1,24 @@
-use nap_mcp_server::AppState;
+use nap_mcp_server::McpServer;
 use anyhow::Result;
+use tokio::io;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    AppState::init_logging();
+    nap_mcp_server::AppState::init_logging();
     
     let db_url = "sqlite:nap_mcp.db";
-    let _state = AppState::new(db_url).await?;
+    let state = nap_mcp_server::AppState::new(db_url).await?;
     
-    println!("NAP MCP Server started successfully");
+    tracing::info!("Starting NAP MCP Server...");
+    
+    let mut stdin = io::stdin();
+    let mut stdout = io::stdout();
+    
+    let mut server = McpServer::new(state);
+    
+    tracing::info!("NAP MCP Server started successfully, waiting for JSON-RPC messages on stdin/stdout");
+    
+    server.start(&mut stdin, &mut stdout).await?;
     
     Ok(())
 }
