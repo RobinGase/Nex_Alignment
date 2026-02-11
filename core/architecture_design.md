@@ -1,6 +1,6 @@
 ﻿# Architecture and Design Guidance
 
-NASA stresses that the quality and longevity of a software‑reliant system are primarily determined by its architecture and design. A well‑structured architecture formalises subsystem decomposition, defines dependencies, provides a basis for evaluating changes and documents valid modes of operation. This section outlines how to translate requirements into a robust architecture and design.
+High-assurance practice stresses that the quality and longevity of a software‑reliant system are primarily determined by its architecture and design. A well‑structured architecture formalises subsystem decomposition, defines dependencies, provides a basis for evaluating changes and documents valid modes of operation. This section outlines how to translate requirements into a robust architecture and design.
 
 ## Architectural principles
 
@@ -18,7 +18,7 @@ NASA stresses that the quality and longevity of a software‑reliant system are 
  For Class 2 and above, include a **threat model** and **trust boundary analysis** that identifies potential attackers, threat vectors and mitigations. Document where sensitive data crosses boundaries and how it is protected.
 2. **Module decomposition.** Provide a hierarchical decomposition of the system into modules or services. For each module, describe its purpose, interfaces, dependencies and key constraints.
 3. **Interface definitions.** Document the inputs, outputs, protocols and error conditions for each interface. For APIs, provide message schemas and describe how invalid inputs are handled.
-4. **Architecture rationale and trade studies.** Record design decisions, trade‑offs and alternatives considered. NASA requires projects to perform architecture reviews for major projects; include rationale and criteria used to select the final design.
+4. **Architecture rationale and trade studies.** Record design decisions, trade‑offs and alternatives considered. This protocol requires projects to perform architecture reviews for major projects; include rationale and criteria used to select the final design.
 5. **Mapping to requirements and hazards.** Trace each requirement to the modules that implement it and annotate modules that implement hazard controls. This mapping supports bidirectional traceability.
 
 ## Design guidelines
@@ -63,7 +63,7 @@ Modern agent architectures often combine deterministic control logic with probab
 
 ## Architecture and design review
 
-1. **Independent review.** Conduct architecture and design reviews with participants who were not involved in the initial design. NASA requires such reviews for major projects. Review checklists should include compliance with requirements, hazard controls, coding guidelines and performance goals.
+1. **Independent review.** Conduct architecture and design reviews with participants who were not involved in the initial design. This protocol requires such reviews for major projects. Review checklists should include compliance with requirements, hazard controls, coding guidelines and performance goals.
  Record the outcome in an **Architecture Review Record (ARR)** artifact. The ARR should list attendees, findings, action items and sign‑offs, and be stored in the configuration management system.
 2. **Prototyping and simulation.** For complex components, develop prototypes or models to validate design assumptions. Validate the design on a high‑fidelity simulation or the target platform before committing to full implementation.
 3. **Update documentation.** Incorporate review feedback into the architecture documents and ensure that all changes are captured in the configuration management system.
@@ -76,7 +76,10 @@ Modern agent architectures often combine deterministic control logic with probab
 * **Testing and verification:** Create test plans and coverage goals in `safety/testing_and_verification.md` that align with the architectural modules and interfaces. The architecture should make it easy to isolate modules for testing.
 * **Safety and assurance:** Identify safety‑critical modules and hazard controls in the architecture and coordinate with `safety/safety_and_assurance.md` to ensure appropriate redundancy and verification.
 
-By investing time in architecture and design, projects can prevent costly downstream changes, enable rigorous analysis and meet NASA’s high expectations for software quality and safety.
+By investing time in architecture and design, projects can prevent costly downstream changes, enable rigorous analysis and meet high expectations for software quality and safety.
+
+
+
 
 
 

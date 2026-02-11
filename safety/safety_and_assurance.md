@@ -1,6 +1,6 @@
 ﻿# Safety, Hazard Analysis and Software Assurance
 
-NASA’s Software Assurance and Software Safety Standard (NASA‑STD‑8739.8A) provides requirements for systematic software assurance, software safety and Independent Verification and Validation (IV&V). Safety assurance aims to ensure that software systems are safe, secure and conform to requirements. Hazard analysis identifies potential conditions that could lead to mishaps and defines controls. This section describes how to incorporate these practices into the **NexGentic Agents Protocol (NAP)**.
+Established software assurance and safety standards provide requirements for systematic software assurance, software safety, and Independent Verification and Validation (IV&V). Safety assurance aims to ensure that software systems are safe, secure, and conform to requirements. Hazard analysis identifies potential conditions that could lead to mishaps and defines controls. This section describes how to incorporate these practices into the **NexGentic Agents Protocol (NAP)**.
 
 ## Hazard analysis
 
@@ -90,7 +90,10 @@ Safety assurance relies on trustworthy evidence. To protect hazard logs, assuran
 * **Testing and verification:** Plan tests to verify hazard controls, including fault injection and stress tests (`safety/testing_and_verification.md`). IV&V activities support verification of safety requirements.
 * **Configuration and risk management:** Record hazards and controls in the risk register (`core/configuration_and_risk_management.md`) and maintain versioned hazard logs.
 
-By systematically performing hazard analysis, identifying safety‑critical software and executing assurance activities, NAP aligns with NASA’s objective to ensure that software systems are safe, secure and compliant with requirements.
+By systematically performing hazard analysis, identifying safety‑critical software and executing assurance activities, NAP aligns with the objective to ensure that software systems are safe, secure and compliant with requirements.
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 ﻿# Enforcement and Policy Engine
 
-The **NexGentic Agents Protocol (NAP)** provides guidance on risk classification, requirements management, testing and safety assurance. To achieve consistent compliance in practice, organisations must implement a machine‑enforced policy engine that gates agent actions, verifies artefacts and automates approvals. NASA’s experience shows that formal policies are ineffective if not enforced; humans may bypass process under pressure. This document proposes an enforcement architecture for NAP.
+The **NexGentic Agents Protocol (NAP)** provides guidance on risk classification, requirements management, testing and safety assurance. To achieve consistent compliance in practice, organisations must implement a machine‑enforced policy engine that gates agent actions, verifies artefacts and automates approvals. Operational experience shows that formal policies are ineffective if not enforced; humans may bypass process under pressure. This document proposes an enforcement architecture for NAP.
 
 ## Goals of enforcement
 
@@ -28,7 +28,7 @@ Just as hazard controls must include multiple independent controls for critical 
 4. **Heartbeat and monitoring.** Expose health endpoints and metrics for the policy engine. Operations teams should monitor latency, error rates and decision consistency. Trigger alerts and automatic switchover when anomalies occur.
 5. **Graceful degradation.** When enforcement cannot complete all checks (e.g., trace graph service unavailable), the engine should degrade gracefully by tightening restrictions rather than loosening them. For example, require manual approval for tasks that normally would be auto‑approved.
 
-Building resilience into the policy engine ensures that enforcement remains reliable even under adverse conditions, aligning with NASA’s emphasis on redundancy and independent controls.
+Building resilience into the policy engine ensures that enforcement remains reliable even under adverse conditions, aligning with a strong emphasis on redundancy and independent controls.
 
 ## Policy conflict resolution
 
@@ -84,6 +84,9 @@ While this document provides high‑level guidance, practical implementations ne
 * **Enforcement architecture:** For practical implementation patterns, CI/CD integration, risk classification services and runtime watchdogs, see `runtime/enforcement_architecture_and_implementation.md`.
 
 By adding an enforcement and policy engine, NAP moves beyond documentation into active compliance. Automated gates, machine‑readable policies and cryptographic evidence prevent shortcuts, ensure consistency and provide a durable foundation for trust in AI agent systems.
+
+
+
 
 
 

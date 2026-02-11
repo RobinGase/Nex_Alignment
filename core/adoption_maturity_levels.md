@@ -7,7 +7,7 @@ Implementing the **NexGentic Agents Protocol (NAP)** in its entirety requires s
 * **Risk classification and templates.** Teams start by using `core/risk_classification.md` to classify tasks and by adopting the basic task header, hazard log and review checklist templates (`templates/`).
 * **Basic testing and peer review.** Unit tests and peer reviews are required for Class 1–2 tasks. Traceability is informal but documented in prose.
 * **Manual approvals.** Human approvers review tasks based on the risk class. Residual risks are recorded in simple logs.
-* **Training and awareness.** Team members receive introductory training on NAP principles and NASA‑inspired practices.
+* **Training and awareness.** Team members receive introductory training on NAP principles and high-assurance practices.
 
 **Entry criteria:** The organisation has identified AI projects, designated a governance lead and committed to adopting NAP principles. Team members have completed an introductory training session and have access to the basic templates.
 
@@ -69,6 +69,8 @@ Implementing the **NexGentic Agents Protocol (NAP)** in its entirety requires s
 * **Iterate and adapt.** Treat the maturity model as a living framework. As technology evolves and organisational needs change, adjust maturity levels and associated capabilities.
 
 By defining adoption maturity levels, NAP helps organisations chart a path from basic compliance to sophisticated, self‑auditing AI governance. Teams can build confidence gradually, ensuring that safety and accountability grow alongside innovation and scale.
+
+
 
 
 
