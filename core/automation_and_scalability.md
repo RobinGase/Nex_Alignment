@@ -1,6 +1,6 @@
 ﻿# Automation and Scalability
 
-The **NexGentic Agents Protocol (NAP)** is intentionally rigorous to align with safety-critical engineering standards. However, adoption at scale requires automation, tooling, and lightweight pathways for low-risk tasks. This document provides guidance on operationalizing the protocol without undue burden.
+The **NexGentic Agents Protocol (NAP)** is intentionally rigorous to align with NASA’s safety and engineering standards. However, adoption at scale requires automation, tooling and lightweight pathways for low‑risk tasks. This document provides guidance on operationalising the protocol without undue burden.
 
 ## Automation tooling
 
@@ -43,7 +43,7 @@ Not all tasks require the full protocol. For low‑risk (Class 0–1) tasks:
 
 1. **Role specialisation.** Assign dedicated roles for requirements engineering, architecture, safety analysis, testing and operations. Provide training and onboarding materials to ensure consistency across teams.
 2. **Shared libraries and patterns.** Develop reusable libraries, services and design patterns conforming to the protocol. Encourage teams to contribute improvements back to the shared repository.
-3. **Ongoing training and coaching.** Offer workshops and mentorship on high-assurance practices, AI‑specific considerations and tool usage. Use retrospective meetings to refine the protocol based on real‑world experience.
+3. **Ongoing training and coaching.** Offer workshops and mentorship on NASA‑inspired practices, AI‑specific considerations and tool usage. Use retrospective meetings to refine the protocol based on real‑world experience.
 
 4. **Governance process retrospectives.** Schedule periodic reviews of the NAP implementation itself. Evaluate metrics from compliance telemetry, incident logs and developer feedback to identify bottlenecks, false positives and gaps in the protocol. Document lessons learned and propose updates to policies, tooling and training materials. Governance retrospectives ensure that NAP evolves with organisational needs and does not become an obsolete or burdensome artefact.
 
@@ -61,8 +61,6 @@ Not all tasks require the full protocol. For low‑risk (Class 0–1) tasks:
 * **Adoption maturity:** Refer to `core/adoption_maturity_levels.md` to assess your organisation’s maturity and plan incremental adoption of the protocol. Use automation tooling appropriate for your maturity level and gradually add components such as probabilistic assurance, behavioural contracts and self‑auditing.
 
 By embracing automation and providing lightweight pathways, teams can adopt the NAP across a broad range of tasks without sacrificing safety or quality.
-
-
 
 
 

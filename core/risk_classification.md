@@ -1,10 +1,10 @@
 ﻿# Risk Classification and Tailoring
 
-This document defines the risk classes used by the **NexGentic Agents Protocol (NAP)** and lists the required artifacts and activities for each class. Risk classification tailors the protocol to the potential impact of an agent’s actions, mirroring a high-assurance approach to software classification and tailoring. When in doubt, classify at the higher level. If stakeholders disagree on classification, the **task owner** and **safety officer** should confer. Unresolved disputes may be escalated to the governance board or resolved by the policy engine according to organizational policy.
+This document defines the risk classes used by the **NexGentic Agents Protocol (NAP)** and lists the required artifacts and activities for each class. Risk classification tailors the protocol to the potential impact of an agent’s actions, mirroring NASA’s approach to software classification and tailoring. When in doubt, classify at the higher level. If stakeholders disagree on classification, the **task owner** and **safety officer** should confer. Unresolved disputes may be escalated to the governance board or resolved by the policy engine according to organisational policy.
 
 ## Why classify risk?
 
-This protocol requires each system and subsystem containing software to be assigned to a software class based on risk, criticality and mission impact. This classification determines which requirements and assurance activities apply. Similarly, NAP uses risk classes to ensure that tasks with greater potential to cause harm receive more rigorous planning, review and verification. Risk classes are independent of the agent’s internal confidence; they reflect the external consequences if something goes wrong.
+NASA requires each system and subsystem containing software to be assigned to a software class based on risk, criticality and mission impact. This classification determines which requirements and assurance activities apply. Similarly, NAP uses risk classes to ensure that tasks with greater potential to cause harm receive more rigorous planning, review and verification. Risk classes are independent of the agent’s internal confidence; they reflect the external consequences if something goes wrong.
 
 ## Risk classes
 
@@ -13,8 +13,8 @@ This protocol requires each system and subsystem containing software to be assig
 | **0 – Minimal** | Tasks with no external side‑effects (read‑only or internal analysis). Failure does not harm people, safety or property. | reading documentation, summarising data | task header, assumptions, plan, minimal logging |
 | **1 – Low** | Write operations to non‑critical data sources or systems with straightforward recovery. Failure could inconvenience but not harm. | updating a draft file, creating a test ticket | all Class 0 artifacts plus diff summary, basic unit tests |
 | **2 – Medium** | Changes to production systems with moderate impact but no safety‑critical consequences. Failure could cause financial or reputational damage. | modifying business logic, deploying to staging | all Class 1 artifacts plus detailed test plan, independent verification, rollback plan and a preliminary hazard log/screening |
-| **3 – High** | Tasks affecting safety‑critical or high‑value assets where failure could harm people, damage hardware or cause mission loss. Equivalent to legacy safety-critical class C–B software. | updating flight software, changing medical device logic | all Class 2 artifacts plus hazard analysis, safety‑critical identification, formal peer review and approval |
-| **4 – Critical** | Changes that could lead to catastrophic outcomes if mishandled. Requires multiple independent controls and is analogous to legacy safety-critical class A software. | updating mission‑critical flight control algorithms, modifying life support systems | all Class 3 artifacts plus independent safety review, software assurance plan, formal IV&V and sign‑off by human authority |
+| **3 – High** | Tasks affecting safety‑critical or high‑value assets where failure could harm people, damage hardware or cause mission loss. Equivalent to NASA Class C–B software. | updating flight software, changing medical device logic | all Class 2 artifacts plus hazard analysis, safety‑critical identification, formal peer review and approval |
+| **4 – Critical** | Changes that could lead to catastrophic outcomes if mishandled. Requires multiple independent controls and is analogous to NASA Class A software. | updating mission‑critical flight control algorithms, modifying life support systems | all Class 3 artifacts plus independent safety review, software assurance plan, formal IV&V and sign‑off by human authority |
 
 **Note:** *Independent verification* refers to review or testing performed by a person or team **not involved in implementing the change**. At a minimum this means the reviewer is a different individual from the one who wrote the code or designed the plan. For Class 2 tasks, a peer who did not contribute to the implementation is sufficient; for Class 3–4 tasks the verification function must be organisationally independent (a separate team or an external contractor) in accordance with IV&V practices. See `safety/testing_and_verification.md` for detailed IV&V requirements. *Formal peer review* means that the review is documented using a checklist, recorded in the configuration management system, and includes sign‑offs from designated reviewers. Informal feedback (e.g., Slack reactions) does not satisfy this requirement.
 
@@ -23,9 +23,9 @@ This protocol requires each system and subsystem containing software to be assig
 1. **Classify higher when uncertain.** If a task could plausibly affect safety or critical assets, treat it as Class 3 or 4 and perform hazard analysis accordingly.
 2. **Promotion through states.** As tasks progress through planning and verification, re‑evaluate classification based on new information (e.g., if testing reveals hidden hazards, increase the class and add required controls).
 3. **No automatic downgrades.** Classification may be downgraded only when a formal hazard analysis demonstrates that the task’s impact is lower than originally assessed and all stakeholders (including the safety officer) agree. Document the rationale and approvals in the trace graph. Unilateral downgrades are prohibited.
-4. **Relation to external software class schemes.** The agent classes map roughly to external software class schemes (A–E), where Class 4 approximates the highest-risk safety‑critical software, and Class 0 approximates simple research utilities. Use this mapping to apply relevant external requirements and standards.
+4. **Relation to NASA software classes.** The agent classes map roughly to NASA’s software classes (A–E), where Class 4 approximates NASA’s highest‑risk safety‑critical software, and Class 0 approximates simple research utilities. Use this mapping to apply relevant NASA requirements and standards.
 5. **Consider autonomy tiers.** Alongside risk class, determine the autonomy tier using `core/agent_autonomy_and_human_oversight.md`. Higher autonomy tiers (A3–A4) combined with high risk may require additional controls, human oversight or formal residual risk acceptance. A4 autonomy is prohibited for Class 0–2 tasks and allowed only under exceptional controls for Class 3–4 tasks.
-6. **Mapping is advisory.** Use the legacy safety-critical class mapping as guidance, but the NAP risk class is the authoritative classification for gating. Do not argue based solely on external labels; instead apply NAP rules and quantitative triggers.
+6. **Mapping is advisory.** Use the NASA class mapping as guidance, but the NAP risk class is the authoritative classification for gating. Do not argue based solely on NASA labels; instead apply NAP rules and quantitative triggers.
 
 ### Quantitative triggers and AI examples
 
@@ -54,7 +54,7 @@ These triggers and examples help map AI tasks to appropriate risk classes. When 
 
 ## Required artifacts by class
 
-The NAP integrates process gates similar to the state machine described in the original protocol. The required deliverables increase with risk class to satisfy the expectation for planning, documentation and independent verification.
+The NAP integrates process gates similar to the state machine described in the original protocol. The required deliverables increase with risk class to satisfy NASA’s expectation for planning, documentation and independent verification.
 
 | Artifact | Class 0 | Class 1 | Class 2 | Class 3 | Class 4 |
 |---|---|---|---|---|---|
@@ -87,10 +87,7 @@ The table above summarises typical artifacts. To avoid divergence between narrat
 
 **Note on economic influences:** Economic and performance factors may **raise** the risk class (e.g., tasks with high potential loss or harm require stricter controls) but should not be used to **lower** the class. Do not down‑classify a safety‑critical task simply because it is expensive to implement or impacts delivery timelines.
 
-By following this classification and tailoring approach, tasks of differing consequence can be managed with the appropriate level of rigor, aligning the NAP with risk-based high-assurance software engineering practices.
-
-
-
+By following this classification and tailoring approach, tasks of differing consequence can be managed with the appropriate level of rigor, aligning the NAP with NASA’s risk‑based software engineering practices.
 
 
 

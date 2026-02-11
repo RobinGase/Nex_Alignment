@@ -1,6 +1,6 @@
 ﻿# Requirements Management and Hazard Analysis
 
-Proper requirements capture is a foundational step in any software project. Industry experience shows poor requirements elicitation and management as one of the most common sources of software problems. This section guides you in defining, validating and tracking requirements for agent tasks, including hazard analysis and safety‑critical classification.
+Proper requirements capture is a foundational step in any software project. NASA cites poor requirements elicitation and management as one of the most common sources of software problems. This section guides you in defining, validating and tracking requirements for agent tasks, including hazard analysis and safety‑critical classification.
 
 ## Elicit and document requirements
 
@@ -18,7 +18,7 @@ Proper requirements capture is a foundational step in any software project. Indu
 ## Validate and verify requirements
 
 1. **Peer review.** Perform peer review of requirements before design begins. Independent review helps identify ambiguities and missing safety constraints.
-2. **Feasibility analysis.** For each requirement, assess feasibility with respect to available resources and risk class. Consider whether off‑the‑shelf (COTS/GOTS) software will be used; This protocol requires that requirements be established for all components, including COTS and open‑source.
+2. **Feasibility analysis.** For each requirement, assess feasibility with respect to available resources and risk class. Consider whether off‑the‑shelf (COTS/GOTS) software will be used; NASA requires that requirements be established for all components, including COTS and open‑source.
  When using COTS or GOTS, document the vendor’s update policy, vulnerability disclosure process and contractual obligations to ensure that supply chain risks are addressed.
 3. **Hazard analysis integration.** Cross‑reference each requirement with the hazard log. For Class 3–4 tasks, perform hazard analysis to identify potential hazards and hazard causes (see `safety/safety_and_assurance.md`). Ensure that at least two independent controls are identified for critical hazards and three for catastrophic hazards.
  Refer to `safety/safety_and_assurance.md` for the definitions of **critical** and **catastrophic** hazards; classification of hazards determines the number of controls and the severity of residual risk.
@@ -47,7 +47,7 @@ AI systems may exhibit behaviours not anticipated during initial design. To addr
 
 ## Traceability and change management
 
-1. **Bidirectional traceability.** Maintain traceability from each requirement to its origin (e.g., stakeholder need, hazard control) and forward to architecture components, test cases and verification results. This protocol requires bidirectional traceability to ensure that all requirements are implemented and tested.
+1. **Bidirectional traceability.** Maintain traceability from each requirement to its origin (e.g., stakeholder need, hazard control) and forward to architecture components, test cases and verification results. NASA requires bidirectional traceability to ensure that all requirements are implemented and tested.
 2. **Change control.** Document all changes to requirements in the configuration management system (`core/configuration_and_risk_management.md`). Re‑evaluate hazard analysis and risk classification whenever requirements change.
 3. **Metrics and measurement.** Track the number of requirements, open versus closed actions, and satisfaction status. These metrics provide insight into project progress and risk.
  In addition, track safety metrics such as the number of **open hazards**, **unverified controls** and **requirements without test coverage**. Use these metrics to guide verification priorities and to inform compliance scoring (`runtime/compliance_scoring_and_metrics.md`).
@@ -60,8 +60,6 @@ AI systems may exhibit behaviours not anticipated during initial design. To addr
 * **Safety and assurance:** For safety‑critical requirements, coordinate with the safety and assurance process (`safety/safety_and_assurance.md`) to identify hazard controls and verification strategies.
 
 By systematically eliciting, documenting, validating and tracing requirements, you create a strong foundation for design, implementation and testing, reducing the likelihood of expensive rework later in the life cycle.
-
-
 
 
 

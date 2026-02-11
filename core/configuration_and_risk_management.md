@@ -1,6 +1,6 @@
 ﻿# Configuration Management and Risk Management
 
-This protocol requires software projects to implement configuration management (CM) plans and risk management processes to ensure the completeness and correctness of software items. CM protects the integrity of project artefacts over time, while risk management identifies and mitigates threats to the project and mission. This section describes how to perform these functions within the **NexGentic Agents Protocol (NAP)**.
+NASA requires software projects to implement configuration management (CM) plans and risk management processes to ensure the completeness and correctness of software items. CM protects the integrity of project artefacts over time, while risk management identifies and mitigates threats to the project and mission. This section describes how to perform these functions within the **NexGentic Agents Protocol (NAP)**.
 
 ## Configuration management
 
@@ -52,10 +52,7 @@ When risks cannot be fully mitigated, record them in the risk register along wit
 * **Testing and verification:** Record test artefacts, results and scripts under CM. Track risks identified during testing and verification (`safety/testing_and_verification.md`).
 * **Safety and assurance:** Hazards and hazard controls from `safety/safety_and_assurance.md` must be logged in the risk register. Safety‑critical software changes require additional review and approval before configuration changes are released.
 
-By implementing robust configuration and risk management, NAP ensures that software artefacts remain consistent and controlled while proactively addressing threats to success, aligning with disciplined processes.
-
-
-
+By implementing robust configuration and risk management, NAP ensures that software artefacts remain consistent and controlled while proactively addressing threats to success, aligning with NASA’s disciplined processes.
 
 
 

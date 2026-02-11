@@ -1,6 +1,6 @@
 ﻿# Operations, Maintenance and Retirement
 
-This protocol requires planning for operations, maintenance and retirement throughout the software life cycle. Software is not complete when it is delivered; it must be monitored, maintained, updated and eventually retired in a controlled manner. This section describes how to manage these phases within the **NexGentic Agents Protocol (NAP)**.
+NASA requires planning for operations, maintenance and retirement throughout the software life cycle. Software is not complete when it is delivered; it must be monitored, maintained, updated and eventually retired in a controlled manner. This section describes how to manage these phases within the **NexGentic Agents Protocol (NAP)**.
 
 ## Operational planning
 
@@ -21,7 +21,7 @@ This protocol requires planning for operations, maintenance and retirement throu
 
 1. **Assess readiness for retirement.** Determine whether the system is obsolete, superseded or no longer needed. Evaluate impacts on dependent systems and stakeholders.
 2. **Plan the shutdown.** Develop a retirement plan that describes how to disable the system safely, archive data, preserve records (requirements, design, test results, hazard logs) and transfer responsibilities. Ensure that hazard controls remain in place until the system is fully decommissioned.
-3. **Archival, knowledge retention and data governance.** Archive documentation, code, configuration records and assurance artefacts in a retrievable format. Define **data retention and deletion policies** that specify which data must be retained (e.g., safety evidence, audit logs), retention durations and secure disposal methods. Provide plans for **knowledge transfer or archival summaries** so that future teams can understand the system’s design, operation and rationale. This protocol expects projects to maintain records for future retrieval.
+3. **Archival, knowledge retention and data governance.** Archive documentation, code, configuration records and assurance artefacts in a retrievable format. Define **data retention and deletion policies** that specify which data must be retained (e.g., safety evidence, audit logs), retention durations and secure disposal methods. Provide plans for **knowledge transfer or archival summaries** so that future teams can understand the system’s design, operation and rationale. NASA expects projects to maintain records for future retrieval.
 4. **Post‑retirement evaluation.** Conduct a lessons‑learned review to capture successes and issues encountered. Feed these insights into future projects to continuously improve processes and safety.
 
 ## Continuous AI evaluation and drift monitoring
@@ -54,8 +54,6 @@ By integrating continuous evaluation, drift monitoring and operator support into
 * **Compliance telemetry:** Use metrics defined in `runtime/compliance_telemetry_and_governance_drift.md` to monitor protocol adherence during operations and maintenance. Include operational metrics (drift incidents, human oversight rate) alongside compliance metrics on dashboards.
 
 By planning for operations, maintenance and retirement early and continuously, the NAP ensures that deployed agents remain safe, reliable and responsive to changing conditions throughout their life cycle.
-
-
 
 
 

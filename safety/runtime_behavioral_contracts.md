@@ -23,7 +23,7 @@ A behavioural contract is a set of constraints and invariants that govern an age
 
 1. **Runtime monitors.** Instrument the agent’s execution environment with monitors that inspect actions against the contract **before**, **during** and **after** execution. Pre‑execution checks validate preconditions and allowed actions; mid‑execution checks monitor ongoing resource usage and invariants; post‑execution checks verify that postconditions and invariants still hold. If a precondition or invariant is violated, the monitor must block or halt the action and trigger a safety mechanism (e.g., kill‑switch). Recording at all three stages ensures that violations are detected promptly and cannot be hidden within asynchronous workflows.
 2. **Policy engine integration.** The enforcement engine (`runtime/enforcement_and_policy_engine.md`) should verify that contracts exist for required actions and that monitors are active. During runtime, it can query monitor status and enforce dynamic gating decisions.
-3. **Fallback and recovery.** Define fallback behaviours when contracts are violated (e.g., revert to safe mode, notify human operator). **Safe modes must preserve audit logging and continue emitting telemetry** so that investigators can reconstruct events leading to the violation. Fallback procedures should be documented in the contract and hazard log. This protocol requires independent controls for critical hazards; a fallback controller can serve as an independent safety mechanism.
+3. **Fallback and recovery.** Define fallback behaviours when contracts are violated (e.g., revert to safe mode, notify human operator). **Safe modes must preserve audit logging and continue emitting telemetry** so that investigators can reconstruct events leading to the violation. Fallback procedures should be documented in the contract and hazard log. NASA requires independent controls for critical hazards; a fallback controller can serve as an independent safety mechanism.
 4. **Logging and evidence.** Record contract evaluations, violations and enforcement actions in tamper‑proof logs (`safety/evidence_anchor_and_log_integrity.md`). Link logs to contract IDs in the trace graph and include them in verification reports.
 
 ## Continuous refinement
@@ -41,8 +41,6 @@ A behavioural contract is a set of constraints and invariants that govern an age
 * **Safety and assurance:** Contracts become part of hazard controls and must be documented and reviewed in hazard analysis (`safety/safety_and_assurance.md`).
 
 By defining and enforcing runtime behavioural contracts, NAP adds an additional layer of operational safety, ensuring that AI agents remain within defined decision envelopes and respond predictably to unexpected conditions. This advanced capability supports the path toward a fully self-governing, safety‑first autonomous infrastructure.
-
-
 
 
 

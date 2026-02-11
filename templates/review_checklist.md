@@ -26,7 +26,7 @@ Use this checklist to guide peer reviews, independent verification and validatio
 * [ ] Have autonomy tiers and human oversight requirements been defined in the design (`core/agent_autonomy_and_human_oversight.md`)?
 
 ## Code Review
-* [ ] Does the code adhere to the coding guidelines (deterministic safety coding rules, secure coding practices)?
+* [ ] Does the code adhere to the coding guidelines (Power of Ten rules, secure coding practices)?
 * [ ] Are functions small, with simple control flow and bounded loops?
 * [ ] Are all parameters validated and return values checked?
 * [ ] Are assertions used appropriately to enforce invariants?
@@ -62,7 +62,6 @@ Use this checklist to guide peer reviews, independent verification and validatio
 ```
 
 Store completed checklists with the reviewed artefacts for traceability. Use them to provide assurance evidence during audits and reviews.
-
 
 
 

@@ -1,6 +1,6 @@
 ﻿# AI‑Specific Considerations and Uncertainty Governance
 
-While the **NexGentic Agents Protocol (NAP)** adapts high-assurance engineering rigour to software agents, AI systems introduce unique challenges such as probabilistic outputs, emergent behaviours, model drift and complex human‑AI interactions. This document supplements the core protocol with guidance tailored to these AI‑specific concerns. It draws on the NIST AI Risk Management Framework (AI RMF) and other best practices.
+While the **NexGentic Agents Protocol (NAP)** adapts NASA‑style engineering rigour to software agents, AI systems introduce unique challenges such as probabilistic outputs, emergent behaviours, model drift and complex human‑AI interactions. This document supplements the core protocol with guidance tailored to these AI‑specific concerns. It draws on the NIST AI Risk Management Framework (AI RMF) and other best practices.
 
 ## Epistemology of AI reliability and uncertainty management
 
@@ -70,8 +70,6 @@ AI systems can experience data, model and concept drift requiring corrective mai
 * **Multi‑agent and emergent risk:** For systems composed of multiple interacting agents or agents with self‑modifying capabilities, consult `evaluation/multi_agent_and_emergent_risk.md`. It expands on emergent behaviours, cross‑agent hazards and self‑modification controls.
 
 By addressing these AI‑specific considerations, the NAP provides a more nuanced and adaptable framework capable of governing both deterministic and probabilistic systems in a rapidly evolving AI landscape.
-
-
 
 
 

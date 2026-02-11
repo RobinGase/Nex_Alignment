@@ -1,12 +1,12 @@
 ﻿# Multi‑Lens Evaluation Harness for NAP
 
-This document extends the universal evaluation harness by introducing a **multi‑lens, multi‑disciplinary assessment** that mirrors real‑world governance panels. The harness synthesises perspectives from safety-critical engineering, hyperscale enterprise AI governance, formal verification disciplines, DevSecOps automation, compliance telemetry, developer ergonomics, long‑term survivability and economic/ethical optimisation. The goal is to ensure that the **NexGentic Agents Protocol (NAP)** can satisfy stringent requirements across all assurance lenses and that scoring remains **deterministic, fail‑closed and evidence‑based**.
+This document extends the universal evaluation harness by introducing a **multi‑lens, multi‑disciplinary assessment** that mirrors real‑world governance panels. The harness synthesises perspectives from NASA safety engineering, hyperscale enterprise AI governance, formal verification disciplines, DevSecOps automation, compliance telemetry, developer ergonomics, long‑term survivability and economic/ethical optimisation. The goal is to ensure that the **NexGentic Agents Protocol (NAP)** can satisfy stringent requirements across all assurance lenses and that scoring remains **deterministic, fail‑closed and evidence‑based**.
 
 ## Nine evaluation lenses
 
 Auditors must review NAP simultaneously through the following lenses. Each lens introduces specific evidence requirements and enforcement expectations:
 
-1. **Safety‑Critical Systems.** Verify lifecycle completeness enforcement, hazard continuity, residual risk acceptance governance, independent verification & validation (IV&V) and fail‑closed design. Require a machine‑verifiable trace graph (`core/trace_graph_schema.md`), risk‑tier artefact rules and integrity of the safety evidence chain.
+1. **NASA / Safety‑Critical Systems.** Verify lifecycle completeness enforcement, hazard continuity, residual risk acceptance governance, independent verification & validation (IV&V) and fail‑closed design. Require a machine‑verifiable trace graph (`core/trace_graph_schema.md`), risk‑tier artefact rules and integrity of the safety evidence chain.
 
 2. **Hyperscale Industry Governance.** Evaluate deployment rollback economics, continuous monitoring, reliability metrics, production safety gating and the balance of cost, latency and customer impact. Require CI/CD governance enforcement proof and runtime blocking architecture (`runtime/enforcement_and_policy_engine.md`), as well as dashboards for governance telemetry and rollback cost analysis (`core/automation_and_scalability.md`, `evaluation/economic_and_performance_risk_modeling.md`).
 
@@ -67,7 +67,7 @@ The following table summarises the evidence required for each lens. Use it to dr
 
 | Lens | Evidence requirements |
 |---|---|
-| **Safety‑Critical** | Machine‑readable trace graph, risk‑tier rules, hazard logs, residual risk acceptance forms, IV&V reports, safety invariants and fail‑closed design documentation. |
+| **NASA / Safety‑Critical** | Machine‑readable trace graph, risk‑tier rules, hazard logs, residual risk acceptance forms, IV&V reports, safety invariants and fail‑closed design documentation. |
 | **Hyperscale Industry** | CI/CD enforcement evidence, rollback and cost modelling, reliability metrics, production gating logic, dashboards displaying safety and economic KPIs. |
 | **AI Autonomy & Alignment** | Autonomy tier definitions, behavioural contracts, supply‑chain provenance logs, self‑modification register, interaction invariants and cascade containment logic. |
 | **Formal Verification** | Formal compliance contract definitions, canonical assurance graph specification, verification hooks and statistical assurance boundaries. |
@@ -90,8 +90,6 @@ To evaluate NAP using this harness:
 6. **Compute deterministic scores**: award 100 only if all lenses confirm enforcement feasibility, evidence exists, simulations succeed, telemetry is measurable, multi‑agent safety enforcement is present, probabilistic gates exist and economic/ethical decisions are documented.
 
 By codifying cross‑disciplinary requirements in a single harness, NAP ensures that evaluations are rigorous, reproducible and aligned with the highest standards of safety and ethics. This harness elevates NAP from a single‑discipline protocol to a **comprehensive, cross‑domain governance framework** that can support diverse regulatory and operational contexts.
-
-
 
 
 

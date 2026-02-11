@@ -5,7 +5,7 @@ As AI systems span organisational boundaries, compliance and safety must be main
 ## Rationale
 
 1. **Multi‑organisation value chains.** NIST notes that generative AI systems are built from many third‑party components, including datasets, pre‑trained models and software libraries. As supply chains grow, a single organisation cannot guarantee the integrity of all components.
-2. **Regulatory interoperability.** Safety‑critical industries often operate under multiple regulatory frameworks. A federated governance model allows organisations to align their internal practices with external standards (e.g., sector safety standards, ISO 26262) while maintaining a common evidence language.
+2. **Regulatory interoperability.** Safety‑critical industries often operate under multiple regulatory frameworks. A federated governance model allows organisations to align their internal practices with external standards (e.g., NASA SWE, ISO 26262) while maintaining a common evidence language.
 3. **Survivability and upgradeability.** Governance cannot be static; it must evolve as hazards, regulations and technologies change. Federated governance provides a mechanism for synchronising upgrades across stakeholders.
 
 ## Core vs extension modules
@@ -28,7 +28,7 @@ To support interoperability, NAP separates governance into **core** and **extens
 
 ## Cross‑domain policy compatibility
 
-1. **Policy mapping.** Provide mappings between NAP policies and external standards (e.g., sector baseline standards, ISO / IEC 25010). Use transformation rules to translate requirements and hazards between frameworks. Document equivalence classes in extension modules.
+1. **Policy mapping.** Provide mappings between NAP policies and external standards (e.g., NASA NPR 7150.2D, ISO / IEC 25010). Use transformation rules to translate requirements and hazards between frameworks. Document equivalence classes in extension modules.
 2. **Runtime interoperability.** When agents from different organisations interact, policy engines must negotiate enforcement rules. Use a handshake protocol where agents exchange their autonomy tiers, risk classes and behavioural contracts. The most restrictive combination of policies is applied.
  In the event of incompatible policies (e.g., one agent permits an action that another prohibits), the default behaviour MUST be **fail‑closed**: reject the action and trigger escalation. Governance boards may subsequently negotiate a resolution, but execution cannot proceed until a compatible policy exists.
 3. **Conflict resolution.** In cases where policies conflict (e.g., different acceptable risk levels), require escalation to human governance boards. Record decisions in residual risk acceptance forms (`safety/risk_acceptance_and_residuals.md`).
@@ -48,8 +48,6 @@ To support interoperability, NAP separates governance into **core** and **extens
 * **Strategic survivability:** Adoption of federated governance ensures that NAP survives beyond the boundaries of a single organisation and can adapt to global safety needs.
 
 By formalising federated governance and interoperability, NAP becomes a **global framework** capable of spanning supply chains, industries and regulatory ecosystems. Core modules provide stability and trust, while extensions allow flexibility and evolution. Cross‑organisation evidence sharing and policy negotiation ensure that safety and accountability survive even as AI systems cross organisational boundaries.
-
-
 
 
 
