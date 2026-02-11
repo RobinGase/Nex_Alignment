@@ -1,8 +1,8 @@
 ﻿# Coding Guidelines
 
-Code quality directly influences the reliability, maintainability and safety of a system. NASA mandates the use of coding standards and static analysis tools to detect defects, assess security and control complexity. The **Power of Ten** rules, formulated at NASA’s Jet Propulsion Laboratory, provide a concise, tool‑checkable standard for safety‑critical C code. This section adapts those rules for general languages and supplements them with secure coding practices.
+Code quality directly influences the reliability, maintainability and safety of a system. This protocol mandates the use of coding standards and static analysis tools to detect defects, assess security and control complexity. The **deterministic safety coding rules**, provide a concise, tool‑checkable standard for safety‑critical C code. This section adapts those rules for general languages and supplements them with secure coding practices.
 
-## Core rules (adapted from the Power of Ten)
+## Core rules (adapted from the deterministic safety coding rules)
 
 1. **Use simple control flow.** Avoid `goto`, unbounded recursion or complex branching. Do not use `setjmp/longjmp`. Keep loops bounded and predictable. In safety‑critical partitions, loops must have a statically provable upper bound; in non‑critical partitions, unbounded loops are permitted only when they are externally bounded (e.g., event loops with timeout). This ensures that the worst‑case behaviour is analysable.
 2. **Bounded loops and recursion.** All loops in safety‑critical partitions must have a fixed upper bound that can be proven statically. Where recursion is necessary, set an explicit depth limit and guard against stack overflows. For AI runtime partitions, apply upper bounds or timeouts to loops and recursion to prevent uncontrolled growth.
@@ -17,7 +17,7 @@ Code quality directly influences the reliability, maintainability and safety of 
 
 ### Safety‑critical versus AI runtime code
 
-The Power of Ten rules were designed for embedded C code in safety‑critical systems. AI agents may include both safety‑critical components (e.g., hardware control, hazard mitigation) and AI runtime components (e.g., LLM orchestration, data pre‑processing). Apply stricter restrictions to safety‑critical code: avoid dynamic memory after initialisation, limit recursion and pointer usage, and enforce deterministic control flow. In AI runtime components, dynamic memory and asynchronous operations may be necessary but should be bounded, managed deterministically and isolated from safety‑critical logic. Document which modules are safety‑critical and apply the appropriate subset of these coding rules. The architecture should enforce criticality partitions (`core/architecture_design.md`) so that AI runtime modules cannot compromise safety‑critical modules. Use interface validators and runtime behavioural contracts (`safety/runtime_behavioral_contracts.md`) to ensure that actions recommended by AI modules stay within safe boundaries.
+The deterministic safety coding rules were designed for embedded C code in safety‑critical systems. AI agents may include both safety‑critical components (e.g., hardware control, hazard mitigation) and AI runtime components (e.g., LLM orchestration, data pre‑processing). Apply stricter restrictions to safety‑critical code: avoid dynamic memory after initialisation, limit recursion and pointer usage, and enforce deterministic control flow. In AI runtime components, dynamic memory and asynchronous operations may be necessary but should be bounded, managed deterministically and isolated from safety‑critical logic. Document which modules are safety‑critical and apply the appropriate subset of these coding rules. The architecture should enforce criticality partitions (`core/architecture_design.md`) so that AI runtime modules cannot compromise safety‑critical modules. Use interface validators and runtime behavioural contracts (`safety/runtime_behavioral_contracts.md`) to ensure that actions recommended by AI modules stay within safe boundaries.
 
 ## Additional secure coding practices
 
@@ -34,14 +34,14 @@ The Power of Ten rules were designed for embedded C code in safety‑critical 
 
 ## Static analysis and complexity metrics
 
-1. **Static analysis.** Employ static analysis tools to detect bugs, security vulnerabilities and complexity hotspots. NASA requires static analysis to be used during development and testing. Document tool configurations and results.
+1. **Static analysis.** Employ static analysis tools to detect bugs, security vulnerabilities and complexity hotspots. This protocol requires static analysis to be used during development and testing. Document tool configurations and results.
 2. **Complexity metrics.** Measure cyclomatic complexity, function length and number of parameters. Set thresholds to flag refactoring candidates. High complexity functions should be split into smaller units.
  Use policy‑defined constants or project configuration to set thresholds (e.g., maximum cyclomatic complexity = 10, maximum function length = 60 lines). Document these thresholds and adjust them based on domain and risk class.
 3. **Code reviews.** Require code reviews by peers or independent reviewers before merging changes. Reviewers should check for adherence to these guidelines, correctness and security considerations.
 
 ## AI‑specific implementation considerations
 
-AI agent systems often integrate machine learning models, asynchronous pipelines and dynamic data flows. While the Power of Ten rules provide a solid baseline for safety‑critical code, some adaptations are necessary:
+AI agent systems often integrate machine learning models, asynchronous pipelines and dynamic data flows. While the deterministic safety coding rules provide a solid baseline for safety‑critical code, some adaptations are necessary:
 
 1. **Dynamic memory and resource management.** AI frameworks may allocate memory dynamically (e.g., for model inference). Restrict dynamic allocation to initialisation or clearly bounded contexts. Release resources deterministically (e.g., using context managers in Python or RAII in C++). Avoid memory leaks by testing under heavy load.
 2. **Asynchronous operations and event loops.** Use asynchronous programming (async/await, promises, event loops) for I/O‑bound model inference or API calls. Ensure that timeouts, retries and cancellation mechanisms are implemented to avoid deadlocks or runaway tasks. Limit the number of concurrent operations to prevent resource exhaustion.
@@ -58,10 +58,12 @@ These AI‑specific guidelines supplement the core coding standards to accommoda
 
 * **Architecture and design:** Apply these guidelines when refining the design into code. The architecture should facilitate small, independent modules that adhere to the coding rules (`core/architecture_design.md`).
 * **Testing and verification:** Unit tests and static analysis results must be recorded in the verification log (`safety/testing_and_verification.md`). Code coverage metrics help verify that functions of all complexity levels are exercised.
-* **Risk classification:** Higher risk classes (Class 2–4) require stricter adherence to the Power of Ten rules and more rigorous static analysis. For Class 3–4 tasks, avoid dynamic memory entirely and restrict pointer use as much as possible.
+* **Risk classification:** Higher risk classes (Class 2–4) require stricter adherence to the deterministic safety coding rules and more rigorous static analysis. For Class 3–4 tasks, avoid dynamic memory entirely and restrict pointer use as much as possible.
 * **Safety and assurance:** Assertions and error handling form part of the safety controls. Document how code conforms to safety guidelines and hazard mitigations (`safety/safety_and_assurance.md`).
 
-Following these coding guidelines reduces defects, improves maintainability and aligns with NASA’s high standards for safety‑critical software.
+Following these coding guidelines reduces defects, improves maintainability, and aligns with rigorous standards for safety-critical software.
+
+
 
 
 

@@ -1,6 +1,6 @@
 ﻿# Testing, Verification and Independent Validation
 
-Testing and verification ensure that the software meets its requirements, functions correctly and performs safely under expected conditions. NASA requires projects to establish and maintain test plans, procedures and reports. Independent testing and validation (IV&V) are mandatory for higher‑risk software. This section describes how to plan and conduct testing and verification within the **NexGentic Agents Protocol (NAP)**.
+Testing and verification ensure that the software meets its requirements, functions correctly and performs safely under expected conditions. This protocol requires projects to establish and maintain test plans, procedures and reports. Independent testing and validation (IV&V) are mandatory for higher‑risk software. This section describes how to plan and conduct testing and verification within the **NexGentic Agents Protocol (NAP)**.
 
 ## Test planning
 
@@ -27,7 +27,7 @@ Testing and verification ensure that the software meets its requirements, functi
 ## Verification and validation activities
 
 1. **Static analysis.** Perform static analysis on the codebase to detect defects and measure code quality and complexity. Document tool configurations and results.
-2. **Code coverage.** Measure code coverage (statement, branch and condition coverage) and track it over time. NASA requires that code coverage measurements be selected, implemented, tracked and reported. Set coverage goals based on risk class (e.g., ≥80 % for Class 2, ≥90 % for Class 3–4).
+2. **Code coverage.** Measure code coverage (statement, branch and condition coverage) and track it over time. This protocol requires that code coverage measurements be selected, implemented, tracked and reported. Set coverage goals based on risk class (e.g., ≥80 % for Class 2, ≥90 % for Class 3–4).
  Coverage metrics apply to deterministic code paths. For AI behaviour, use **dataset/prompt coverage** analogs: measure how many unique data slices, prompt patterns or scenario categories are exercised by your evaluation suite. Document prompt coverage and tie it back to requirements and hazards.
 3. **Independent Verification and Validation (IV&V).** For Class 3–4 tasks, an independent organisation or team must witness and approve testing. IV&V personnel review requirements, design and implementation and perform their own analysis and tests. Document all IV&V activities and findings.
 4. **Peer reviews and inspections.** Conduct peer reviews of code, test cases and test results. Peer review checklists should include compliance with requirements, adherence to coding guidelines and coverage of hazard controls.
@@ -63,7 +63,10 @@ Adding these AI‑specific evaluation activities ensures that machine learning a
 
 * **Probabilistic assurance:** Use the guidance in `evaluation/probabilistic_assurance_and_release_metrics.md` to compute confidence intervals, variance and reliability indices for AI models. Incorporate these metrics into test reports and release decisions.
 
-By following this structured testing and verification process, the NAP achieves high confidence that software behaves as intended and meets NASA’s rigorous standards.
+By following this structured testing and verification process, the NAP achieves high confidence that software behaves as intended and meets rigorous safety and assurance standards.
+
+
+
 
 
 

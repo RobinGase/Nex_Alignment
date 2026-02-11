@@ -1,12 +1,12 @@
 ﻿# Traceability and Documentation Framework
 
-NASA’s software engineering policies emphasise that requirements must be clear, individually verifiable and traceable through design, implementation, testing and hazard controls. Without a disciplined traceability framework, it becomes difficult to demonstrate that all requirements have been implemented, tested and accepted, or to assess the impact of changes. This document defines a traceability schema for the **NexGentic Agents Protocol (NAP)** and provides guidance on documenting artefacts.
+High-assurance software engineering policies emphasize that requirements must be clear, individually verifiable, and traceable through design, implementation, testing, and hazard controls. Without a disciplined traceability framework, it becomes difficult to demonstrate that all requirements have been implemented, tested, and accepted, or to assess the impact of changes. This document defines a traceability schema for the **NexGentic Agents Protocol (NAP)** and provides guidance on documenting artifacts.
 
 ## Purpose of traceability
 
 Traceability enables bidirectional links from requirements to the artefacts that implement them and to the tests and analyses that verify them. It also links hazard controls, risk acceptance decisions and operational metrics back to their originating requirements. A formal trace graph supports:
 
-* **Verification that all requirements are implemented and tested.** Each requirement must trace forward to design elements, code units, test cases and hazard controls. NASA requires bidirectional traceability to ensure completeness.
+* **Verification that all requirements are implemented and tested.** Each requirement must trace forward to design elements, code units, test cases and hazard controls. This protocol requires bidirectional traceability to ensure completeness.
 * **Impact analysis.** When requirements change or emergent behaviours are discovered, trace links indicate which design elements, code, tests and hazard controls need revision.
 * **Risk management and residual risk acceptance.** Traceability links allow residual risks to be tied back to specific requirements and hazard controls, facilitating informed risk acceptance decisions (see `safety/risk_acceptance_and_residuals.md`).
 * **Auditability and documentation.** Trace graphs provide auditors and assurance personnel with an unambiguous mapping between stakeholder needs, design choices and test evidence.
@@ -84,6 +84,8 @@ By enforcing artefact completeness rules and ensuring lifecycle audit continuity
 * **Configuration and risk management:** Manage traceability artefacts, including matrices and graphs, in the configuration management system. Use the risk register to track hazards and link them to trace IDs.
 
 By adopting this traceability and documentation framework, NAP ensures that every stakeholder need is addressed through design, implementation and verification, and that evidence can be readily provided for audits, risk acceptance and safety assurance.
+
+
 
 
 

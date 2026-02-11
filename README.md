@@ -1,6 +1,6 @@
 ﻿# NexGentic Agents Protocol (NAP)
 
-This repository contains an updated **NexGentic Agents Protocol (NAP)**, a NASA‑inspired framework for developing, verifying and operating AI‑driven software systems. It integrates lessons from NASA’s software engineering requirements, software assurance standards and safety guidelines. The goal is to achieve predictable, auditable and safe agent behaviour while covering the full software life‑cycle from requirements through retirement. 
+This repository contains an updated **NexGentic Agents Protocol (NAP)**, a high-assurance framework for developing, verifying and operating AI‑driven software systems. It integrates lessons from rigorous software engineering requirements, software assurance standards and safety guidelines. The goal is to achieve predictable, auditable and safe agent behaviour while covering the full software life‑cycle from requirements through retirement. 
 
 ## Project information
 
@@ -8,7 +8,7 @@ For a concise publishing overview, read `INFO.md`.
 
 ## Start here first
 
-For a cleaner and deterministic navigation flow, begin with `START_HERE.md`.
+For a cleaner and deterministic navigation flow, begin with `.AppName/APPNAME.md`.
 It routes developers and agents to the right folder and protocol documents by use case.
 
 ## Phase 4 canonical layout
@@ -20,18 +20,18 @@ Canonical protocol documents are organized into topic folders:
 - `runtime/`
 - `evaluation/`
 
-Root-level markdown files now include only repository entrypoints (`README.md`, `START_HERE.md`, `CHANGELOG.md`).
-All protocol content is canonicalized under topic folders.
+Root-level markdown files now include primary repository entrypoints (`README.md`, `CHANGELOG.md`), and the canonical agent/developer startpoint is `.AppName/APPNAME.md`.
+All protocol content is canonicalized under topic folders and the `.AppName/` entrypoint folder.
 
 ## Why a new structure?
 
-Earlier drafts focused primarily on risk classes and process gating but missed key NASA priorities such as requirements management, architecture documentation, hazard analysis, configuration management and maintenance planning. This new structure addresses those gaps. Each section links to related guidance to encourage consistent application. Together the documents implement NASA’s expectation that software projects plan comprehensively, document decisions, validate and verify independently and manage risk throughout the life‑cycle.
+Earlier drafts focused primarily on risk classes and process gating but missed key high-assurance priorities such as requirements management, architecture documentation, hazard analysis, configuration management and maintenance planning. This new structure addresses those gaps. Each section links to related guidance to encourage consistent application. Together the documents implement the expectation that software projects plan comprehensively, document decisions, validate and verify independently and manage risk throughout the life‑cycle.
 
 ## Repository overview
 
 | Path | Purpose |
 | --- | --- |
-| `START_HERE.md` | Primary navigation entrypoint that routes agents and developers by use case, folder, and required validation steps. |
+| `.AppName/APPNAME.md` | Primary navigation entrypoint that routes agents and developers by use case, folder, and required validation steps. |
 | `core/README.md` | Core baseline index for risk, autonomy, requirements, architecture and traceability foundations. |
 | `safety/README.md` | Safety/assurance index for hazard controls, verification depth, formal methods and residual-risk handling. |
 | `runtime/README.md` | Runtime enforcement index for deterministic decision ownership, profile checks and policy execution. |
@@ -42,7 +42,7 @@ Earlier drafts focused primarily on risk classes and process gating but missed k
 | `core/risk_classification.md` | Describes risk classes, tailoring rules and required artefacts. Introduces quantitative triggers and examples. |
 | `core/requirements_management.md` | Outlines how to elicit, document, validate and trace requirements; introduces hazard analysis and safety‑critical identification. |
 | `core/architecture_design.md` | Provides guidance for designing and reviewing software architecture and module design. |
-| `core/coding_guidelines.md` | Summarises coding rules inspired by NASA’s “Power of Ten” and secure coding practices. |
+| `core/coding_guidelines.md` | Summarises deterministic safety coding rules and secure coding practices. |
 | `safety/testing_and_verification.md` | Defines testing strategies, verification processes, code coverage and Independent Verification & Validation (IV&V). |
 | `core/configuration_and_risk_management.md` | Specifies configuration management, change control, versioning and risk management practices. |
 | `safety/safety_and_assurance.md` | Describes hazard analysis, safety‑critical classification, hazard controls and software assurance objectives. |
@@ -70,7 +70,7 @@ Earlier drafts focused primarily on risk classes and process gating but missed k
 | `evaluation/multi_agent_simulation_and_modeling.md` | Provides a methodological framework for designing, executing and analysing multi‑agent simulations, including scenario design, simulation environments, coverage criteria, metrics and normative vs reference requirements. Complements the modelling guidance in `evaluation/multi_agent_and_emergent_risk.md`. |
 | `runtime/telemetry_schema.md` | Defines the standard schema for telemetry events, enabling automated compliance monitoring, drift detection and governance health scoring. |
 | `evaluation/nap_evaluation_harness.md` | Provides a deterministic, fail‑closed evaluation framework and multi‑agent workflow for objectively assessing NAP compliance and scoring. Harness outcomes are assurance recommendations only (`assurance_go`/`assurance_no_go`) and are not runtime authorization gates. |
-| `evaluation/multi_lens_evaluation_harness.md` | Extends the evaluation harness to incorporate nine assurance lenses (NASA safety, hyperscale industry, AI autonomy, formal verification, DevSecOps, telemetry, developer ergonomics, survivability and economic ethics). Defines lens‑specific evidence requirements and fail‑closed scoring rules. Multi‑lens outcomes are advisory and do not replace runtime gate ownership. |
+| `evaluation/multi_lens_evaluation_harness.md` | Extends the evaluation harness to incorporate nine assurance lenses (safety-critical engineering, hyperscale industry, AI autonomy, formal verification, DevSecOps, telemetry, developer ergonomics, survivability and economic ethics). Defines lens‑specific evidence requirements and fail‑closed scoring rules. Multi‑lens outcomes are advisory and do not replace runtime gate ownership. |
 | `safety/formal_verification_and_runtime_proof.md` | Integrates formal verification into NAP by defining formal contracts, proof artefacts and runtime verification hooks, enabling mathematical and statistical assurance boundaries. |
 | `runtime/telemetry_example_streams.md` | Provides sample telemetry event streams demonstrating how policy violations, drift detections and probabilistic release failures are recorded using the standard telemetry schema. Includes threshold guidance for drift detection. |
 | `evaluation/federated_governance_and_interoperability.md` | Defines a federated governance model for cross‑organisation interoperability, core versus extension modules, evidence sharing, policy negotiation and upgrade survivability. |
@@ -86,12 +86,14 @@ Earlier drafts focused primarily on risk classes and process gating but missed k
 | `tools/run_enforcement_simulations.ps1` | Executable simulation harness that validates deterministic runtime outcomes (`approve`, `manual_review`, `block`, `escalate`) for representative policy scenarios. Writes machine-readable results to `audit_outputs/`. |
 | `tools/check_policy_runtime_parity.ps1` | Parity check script that validates policy template rules against runtime normative constraints (for example, A4 prohibition for Class 0–2). Writes a machine-readable report to `audit_outputs/`. |
 | `tools/validate_use_case_profiles.ps1` | Validates profile and bundle catalogs, checks cross-references and emits `audit_outputs/use_case_profile_validation_report.json`. |
+| `tools/run_optional_workflows.ps1` | Optional, env-driven integration runner. Auto-detects configured integrations (for example Notion) from `.env` and executes probes/tool-calls when enabled. Writes `audit_outputs/optional_workflow_results.json`. |
+| `.env.example` | Template for optional workflow variables and secrets. Copy to `.env` and enable only the integrations you want. |
 | `audit_outputs/README.md` | Generated-output workspace. Starts empty for fresh implementations; populate by running scripts in `tools/`. |
 | `CHANGELOG.md` | Records notable changes to the protocol. |
 
 ## Getting started
 
-1. Open `START_HERE.md` and follow its use-case routing flow.
+1. Open `.AppName/APPNAME.md` and follow its use-case routing flow.
 2. Use `core/README.md` for baseline protocol setup, then `runtime/README.md` for deterministic enforcement flow.
 3. Read `core/risk_classification.md` and `core/agent_autonomy_and_human_oversight.md` to assign risk class and autonomy tier that satisfy profile floor/ceiling constraints.
 4. Use `templates/task_header_template.md` to capture profile declarations, operation tags, goal, constraints and plan.
@@ -123,7 +125,13 @@ Earlier drafts focused primarily on risk classes and process gating but missed k
 
 28. Use `core/developer_onboarding_and_examples.md` to familiarise new team members with NAP. Follow the quick‑start checklist and study the worked example to see how artefacts, trace graphs and enforcement decisions come together in practice.
 
-This modular structure allows teams to adopt the components that are most relevant to their project while maintaining compliance with NASA’s high standards.
+29. Optionally enable external workflow/tool-call integrations (for example Notion) by creating `.env` from `.env.example`, setting `NAP_OPTIONAL_WORKFLOWS_ENABLED=true`, and running `tools/run_optional_workflows.ps1`.
+
+This modular structure allows teams to adopt the components that are most relevant to their project while maintaining compliance with high-assurance standards.
+
+
+
+
 
 
 

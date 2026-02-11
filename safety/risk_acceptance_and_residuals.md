@@ -1,6 +1,6 @@
 ﻿# Risk Acceptance and Residual Risk Management
 
-Not all risks can be eliminated. When hazard controls and mitigation efforts reduce risk but cannot drive it to zero, a formal residual risk acceptance process must be followed. NASA’s Agency Risk Management Requirements (NPR 8000.4C) assigns accountability for risk acceptance decisions to programmatic authorities and Technical Authorities, and requires documentation of the technical basis and rationale. This document adapts those principles for the **NexGentic Agents Protocol (NAP)**.
+Not all risks can be eliminated. When hazard controls and mitigation efforts reduce risk but cannot drive it to zero, a formal residual risk acceptance process must be followed. agency-grade risk management requirements assigns accountability for risk acceptance decisions to programmatic authorities and Technical Authorities, and requires documentation of the technical basis and rationale. This document adapts those principles for the **NexGentic Agents Protocol (NAP)**.
 
 ## Roles and responsibilities
 
@@ -18,12 +18,12 @@ Not all risks can be eliminated. When hazard controls and mitigation efforts red
  * Description of residual risk and its potential consequences.
  * Rationale for why residual risk cannot be further reduced.
  * Technical basis for acceptance, referencing design analyses, test results and traceability (`core/traceability_and_documentation.md`).
- * Signatures: task owner, Technical Authority and approving authority. NASA requires documentation of both manager approval and TA concurrence with signatures.
+ * Signatures: task owner, Technical Authority and approving authority. This protocol requires documentation of both manager approval and TA concurrence with signatures.
  * Date of acceptance and expiry (residual risk should be revisited periodically or when operating conditions change).
  * Evidence anchors: include digital signatures and hash anchors for the form itself so that acceptance decisions are tamper‑proof (`safety/evidence_anchor_and_log_integrity.md`).
 3. **Review and concurrence.** The Technical Authority reviews the form, confirms that all feasible controls have been implemented and concurring evidence is documented. If the TA cannot concur, the issue is escalated to higher authority for resolution.
-4. **Approval and recording.** The approving authority signs the form, accepting the residual risk. The signed form becomes part of the configuration baseline and is stored with the hazard log and risk register (`core/configuration_and_risk_management.md`). NASA requires risk acceptance documentation to be maintained and periodically reviewed.
-5. **Communication and monitoring.** Communicate the accepted risk to stakeholders, including operators and assurance personnel. Monitor the associated metrics and revisit the acceptance at regular intervals or when conditions change. Periodic review is mandated by NASA to ensure continued acceptability of risk.
+4. **Approval and recording.** The approving authority signs the form, accepting the residual risk. The signed form becomes part of the configuration baseline and is stored with the hazard log and risk register (`core/configuration_and_risk_management.md`). This protocol requires risk acceptance documentation to be maintained and periodically reviewed.
+5. **Communication and monitoring.** Communicate the accepted risk to stakeholders, including operators and assurance personnel. Monitor the associated metrics and revisit the acceptance at regular intervals or when conditions change. Periodic review is mandatory to ensure continued acceptability of risk.
 
 ## Waivers and deviations
 
@@ -42,7 +42,10 @@ Waivers and deviations must be tracked and revisited regularly. If conditions ch
 * **Traceability:** Link residual risk decisions (`RIS-#` identifiers) to requirements, hazards and controls using the traceability framework (`core/traceability_and_documentation.md`).
 * **Configuration management:** Store completed risk acceptance forms, waivers and deviations in the configuration management system and risk register (`core/configuration_and_risk_management.md`). Include them in reviews and audits.
 
-By establishing a formal process for residual risk acceptance, NAP aligns with NASA’s expectation that programmatic and technical authorities jointly approve risks, document their decisions and revisit them over time. This transparency ensures that risks are consciously assumed rather than inadvertently incurred.
+By establishing a formal process for residual risk acceptance, NAP aligns with the expectation that programmatic and technical authorities jointly approve risks, document their decisions and revisit them over time. This transparency ensures that risks are consciously assumed rather than inadvertently incurred.
+
+
+
 
 
 
