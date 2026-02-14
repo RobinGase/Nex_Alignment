@@ -1,6 +1,6 @@
-pub mod tools;
 pub mod responses;
 pub mod server;
+pub mod tools;
 
 pub use server::McpServer;
 pub use tools::ToolRegistry;

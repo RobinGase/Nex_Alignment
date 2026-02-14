@@ -1,0 +1,27 @@
+version: "1"
+agents:
+  - id: "coding-agent-0"
+    codename: "DevMaster"
+    role: "backend_coding"
+    lane:
+      branch: "DevMaster"
+    scopes:
+      - "backend/**"
+      - "artifacts/**"
+
+  - id: "frontend-subagent-0"
+    codename: "FrontEndTestBranch"
+    role: "frontend_coding"
+    lane:
+      branch: "FrontEndTestBranch"
+    scopes:
+      - "boomies_app/**"
+
+  - id: "review-agent-1"
+    codename: "ReviewGuard"
+    role: "review"
+    lane:
+      branch: "ReviewLane"
+    scopes:
+      - "reviews/**"
+      - "mcp-server/**"

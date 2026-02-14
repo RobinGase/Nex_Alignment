@@ -1,7 +1,7 @@
-use sqlx::{SqlitePool, Row};
 use serde_json::Value;
+use sqlx::{Row, SqlitePool};
 
-use anyhow::{Result, Context};
+use anyhow::{Context, Result};
 use chrono::Utc;
 
 #[derive(Clone)]
@@ -13,7 +13,7 @@ impl DbQueries {
     pub fn new(pool: SqlitePool) -> Self {
         Self { pool }
     }
-    
+
     pub async fn insert_agent(&self, agent_id: &str, session_id: &str) -> Result<()> {
         let created_at = Utc::now().to_rfc3339();
         sqlx::query(

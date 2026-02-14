@@ -81,22 +81,99 @@ assignees:
 The server exposes the following MCP tools:
 
 #### `read_assignments(plan_id)`
-**Input**: Plan ID string  
-**Output**: Agent assignments with files and constraints
+**Input**: Plan ID string (required when multiple plan files exist)  
+**Output**: Agent assignments with files and constraints loaded from `plans/*.yaml`
 
 #### `request_review(work_package, context)`
-**Input**: Work package ID, brief context  
+**Input**: Work package ID, context, `requesting_agent`, `target_agent`, and `ack` (`request_id`, `target_agent`, `branch`)  
 **Output**: Review request ID and deadline
 
 #### `submit_review(request_id, findings, decision)`
-**Input**: Request ID, findings array, approval decision  
+**Input**: Request ID, findings, decision, `reviewing_agent`, and `ack` (`request_id`, `target_agent`, `branch`)  
 **Output**: Confirmation ID
 
 #### `check_status()`
 **Input**: None  
 **Output**: Agent statuses, pending reviews, completion flag
 
-### 3. Agent Session Registration
+### 3. Agent Definitions and Lane Enforcement
+
+The MCP server loads lane definitions from `config/agent_definitions.yaml` during startup and validates:
+- unique agent IDs
+- required IDs (`coding-agent-0`, `frontend-subagent-0`, `review-agent-1`)
+- non-empty branch lanes and scopes
+
+Definition format:
+
+```yaml
+version: "1"
+agents:
+  - id: "coding-agent-0"
+    codename: "DevMaster"
+    role: "backend_coding"
+    lane:
+      branch: "DevMaster"
+    scopes:
+      - "backend/**"
+      - "artifacts/**"
+```
+
+Lane guardrails are enforced in normal mode:
+- `ack.request_id`
+- `ack.target_agent`
+- `ack.branch`
+
+`ack.branch` must match the **actor agent lane branch**:
+- `request_review`: branch must match `requesting_agent` lane
+- `submit_review`: branch must match `reviewing_agent` lane and `reviewing_agent` must equal persisted request `target_agent`
+
+Out-of-lane calls are rejected.
+
+### 4. Single-Agent Fallback Mode
+
+If lane definitions are unavailable and you need emergency local testing, you can enable fallback mode:
+
+```bash
+NAP_MCP_SINGLE_AGENT=1 cargo run
+```
+
+In fallback mode:
+- lane enforcement is relaxed
+- server logs a warning
+- intended for local/dev use only
+
+Optional override for definition path:
+
+```bash
+NAP_MCP_AGENT_DEFINITIONS_PATH=/custom/path/agent_definitions.yaml cargo run
+```
+
+### 5. Plan Source Overrides (packaged binary friendly)
+
+Default plan loading uses `<repo>/mcp-server/plans/`.
+
+For packaged binaries or custom deployments, override the source with environment variables:
+
+```bash
+# Option A: directory containing one or more *.yaml plan files
+NAP_MCP_PLANS_DIR=/custom/plans cargo run
+
+# Option B: explicit plan file path
+NAP_MCP_PLANS_PATH=/custom/plans/session.yaml cargo run
+```
+
+Selection behavior:
+- If `NAP_MCP_PLANS_PATH` is set to a file, that file is used.
+- If `NAP_MCP_PLANS_PATH` is set to a directory, that directory is scanned.
+- Else if `NAP_MCP_PLANS_DIR` is set, that directory is scanned.
+- Else default `<repo>/mcp-server/plans/` is scanned.
+
+Ambiguity rule for `read_assignments`:
+- one matching plan file and no `plan_id` -> allowed
+- multiple matching plan files and no `plan_id` -> rejected with disambiguation error
+- explicit `plan_id` -> selected by `plan_id` value
+
+### 6. Agent Session Registration
 
 Agents register with the server:
 
@@ -177,6 +254,10 @@ Integration tests simulate 4-agent orchestration scenarios:
 ```bash
 cargo test --test integration_test -- --nocapture
 ```
+
+For a full CLI/IDE smoke test workflow (JSON-RPC initialize/tools/list, DB persistence checks, lane checks, plan ambiguity, fallback mode), see:
+
+- `VERIFICATION_CHECKLIST.md`
 
 ## NAP Integration
 

@@ -1,6 +1,6 @@
-use crate::AppState;
 use crate::protocol::tools::ToolRegistry;
-use anyhow::{Result, anyhow};
+use crate::AppState;
+use anyhow::{anyhow, Result};
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use tokio::io::{AsyncBufReadExt, AsyncRead, AsyncWrite, AsyncWriteExt, BufReader};
@@ -44,19 +44,19 @@ impl McpServer {
             initialized: false,
         }
     }
-    
+
     pub async fn start<R, W>(&mut self, stdin: R, mut stdout: W) -> Result<()>
     where
         R: AsyncRead + Unpin,
         W: AsyncWrite + Unpin,
     {
         tracing::info!("MCP Server protocol handler started");
-        
+
         let mut reader = BufReader::new(stdin);
         loop {
             // Read messages line by line (JSON-RPC over stdio uses newline delimiting)
             let mut line = String::new();
-            
+
             match reader.read_line(&mut line).await {
                 Ok(0) => {
                     tracing::info!("EOF received, shutting down");
@@ -67,9 +67,9 @@ impl McpServer {
                     if line.is_empty() {
                         continue;
                     }
-                    
+
                     tracing::debug!("Received: {}", line);
-                    
+
                     // Parse JSON-RPC request
                     match self.handle_request(line).await {
                         Ok(response) => {
@@ -106,13 +106,13 @@ impl McpServer {
                 }
             }
         }
-        
+
         Ok(())
     }
-    
+
     async fn handle_request(&mut self, line: &str) -> Result<JsonRpcResponse> {
         let request: JsonRpcRequest = serde_json::from_str(line)?;
-        
+
         if request.jsonrpc != "2.0" {
             return Ok(JsonRpcResponse {
                 jsonrpc: "2.0".to_string(),
@@ -125,7 +125,7 @@ impl McpServer {
                 }),
             });
         }
-        
+
         let result = match request.method.as_str() {
             "initialize" => self.handle_initialize(request.params).await,
             "initialized" => self.handle_initialized().await,
@@ -135,7 +135,7 @@ impl McpServer {
             "notifications/cancelled" => self.handle_cancelled(request.params).await,
             _ => Err(anyhow!("Method not found: {}", request.method)),
         };
-        
+
         match result {
             Ok(value) => Ok(JsonRpcResponse {
                 jsonrpc: "2.0".to_string(),
@@ -155,16 +155,16 @@ impl McpServer {
             }),
         }
     }
-    
+
     async fn handle_initialize(&mut self, params: Option<Value>) -> Result<Value> {
         tracing::info!("Received initialize request");
-        
+
         let capabilities = json!({
             "tools": {},
             "resources": {},
             "prompts": {}
         });
-        
+
         Ok(json!({
             "protocolVersion": "2024-11-05",
             "capabilities": capabilities,
@@ -174,39 +174,39 @@ impl McpServer {
             }
         }))
     }
-    
+
     async fn handle_initialized(&mut self) -> Result<Value> {
         tracing::info!("Received initialized notification");
         self.initialized = true;
         Ok(json!(null))
     }
-    
+
     async fn handle_shutdown(&mut self) -> Result<Value> {
         tracing::info!("Received shutdown request");
         self.initialized = false;
         Ok(json!(null))
     }
-    
+
     async fn handle_tools_list(&self, _params: Option<Value>) -> Result<Value> {
         tracing::info!("Received tools/list request");
-        
+
         let tools = self.tools.list_all();
-        
+
         Ok(json!({ "tools": tools }))
     }
-    
+
     async fn handle_tools_call(&mut self, params: Option<Value>) -> Result<Value> {
         tracing::info!("Received tools/call request");
-        
+
         let params = params.ok_or_else(|| anyhow!("Missing params"))?;
         let tool_name = params["name"]
             .as_str()
             .ok_or_else(|| anyhow!("Missing tool name"))?;
-        
+
         let arguments = params.get("arguments").cloned().unwrap_or(json!({}));
-        
+
         let result = self.tools.call(tool_name, arguments, &self.state).await?;
-        
+
         Ok(json!({
             "content": [
                 {
@@ -216,7 +216,7 @@ impl McpServer {
             ]
         }))
     }
-    
+
     async fn handle_cancelled(&self, _params: Option<Value>) -> Result<Value> {
         tracing::info!("Received notifications/cancelled");
         Ok(json!(null))
